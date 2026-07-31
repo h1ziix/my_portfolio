@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { portfolio } from "@/data/portfolio";
 import { Reveal } from "@/components/ui/reveal";
 import { ActionLink } from "@/components/ui/action-link";
@@ -60,14 +61,38 @@ export function Contact() {
             })}
           </div>
 
-          <ActionLink
-            href="https://github.com/h1ziix"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-10"
-          >
-            View GitHub
-          </ActionLink>
+          <div className="mt-8 flex items-center justify-between gap-5">
+            <ActionLink
+              href="https://github.com/h1ziix"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View GitHub
+            </ActionLink>
+            <div
+              aria-hidden="true"
+              className="relative h-32 w-32 shrink-0 transition duration-500 hover:-translate-y-1 hover:translate-x-1 hover:rotate-2"
+            >
+              <Image
+                src="/brand/toksoz-cursor.gif"
+                alt=""
+                fill
+                unoptimized
+                sizes="128px"
+                className="object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
+              />
+              <Image
+                src="/brand/toksoz-cursor.webp"
+                alt=""
+                fill
+                sizes="128px"
+                className="hidden object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
+              />
+              <span className="absolute right-2 top-0 font-mono text-lg text-signal-violet">
+                ✦
+              </span>
+            </div>
+          </div>
         </div>
       </Reveal>
     </section>

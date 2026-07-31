@@ -13,17 +13,19 @@ import {
 
 export const portfolio = {
   person: {
-    name: "Sultan",
-    displayName: "SULTAN",
-    title: "Fullstack & AI Engineer",
-    positioning: "AI-Native Fullstack Developer",
-    experience: "Approximately 2 years of practical development experience",
+    name: "Toksoz Sultan",
+    displayName: "TOKSOZ SULTAN",
+    title: "Fullstack Developer / Automation & AI Integrations",
+    positioning: "Fullstack Developer",
+    experience: "2.5 years of development experience",
+    age: "18 years old",
     location: "Almaty, Kazakhstan",
     availability: "Available for opportunities",
     profile:
-      "I build web products, backend systems, AI-powered features, internal tools and business-process automations.",
+      "I build web products, backend systems and internal tools that automate complex business processes.",
     summary:
-      "Fullstack & AI Engineer focused on production-ready web products, backend systems and AI-powered automation."
+      "Fullstack developer focused on production web products, internal systems, document automation and practical AI integrations.",
+    resumeHref: "/resume/toksoz-sultan-resume.pdf"
   },
   navigation: [
     { label: "Work", href: "#work" },
@@ -32,12 +34,12 @@ export const portfolio = {
     { label: "AI Workflow", href: "#ai-workflow" },
     { label: "Contact", href: "#contact" }
   ],
-  heroMeta: ["~2 years building", "Almaty, Kazakhstan", "Open to remote / hybrid"],
+  heroMeta: ["18 years old", "2.5 years experience", "Remote / hybrid · Almaty"],
   approach: [
     "Understand the business problem",
     "Decompose the system",
     "Design the architecture",
-    "Build with AI acceleration",
+    "Implement end to end",
     "Validate, test, refine",
     "Ship and iterate"
   ],
@@ -45,36 +47,71 @@ export const portfolio = {
     {
       company: "KazEcoFood",
       role: "Fullstack Developer / Automation Engineer",
-      period: "Current experience",
+      period: "Current role",
       description:
-        "Delivered internal tools, automation flows, dashboards and backend logic for document-heavy operational workflows.",
+        "Built an internal fullstack platform from scratch for workplace assessment workflows and regulated DOCX document generation.",
       facts: [
-        "Analyzed internal business processes and repetitive manual operations",
-        "Worked with 14 document templates and document-heavy workflows",
-        "Created internal tools, web interfaces and dashboards",
-        "Implemented backend logic, database work and API integrations",
-        "Integrated external services and improved workflow consistency",
-        "Delivered solutions from business problem to working implementation"
+        "Covered the full product cycle: requirements, UX, frontend, backend, data model, testing and deployment",
+        "Centralized projects, workplace data and measurements across 13 protocol types",
+        "Implemented authentication, Supabase storage, autosave and save-conflict handling",
+        "Automated shared fields, workplace synchronization, validation and DOCX batch export",
+        "Supported assessment workflows covering approximately 2,000 employees",
+        "Increased daily document throughput from 20–25 to 100–200"
       ],
       capabilities: [
-        "Automation",
-        "Internal systems",
-        "Document workflows",
-        "Dashboards",
-        "APIs",
-        "Databases",
-        "Integrations",
-        "End-to-end delivery"
+        "13 protocol types",
+        "~2,000 employees",
+        "4–8× throughput",
+        "70+ automated tests",
+        "Supabase RLS",
+        "DOCX generation",
+        "Data synchronization",
+        "End-to-end ownership"
       ]
     }
   ],
   projects: [
     {
+      name: "KazEcoFood",
+      category: "Flagship Case / Internal Operations",
+      description:
+        "A production document automation platform for workplace assessment. It centralizes organization, workplace and measurement data, synchronizes them across regulated protocols, validates technical fields and generates complete DOCX packages.",
+      impact:
+        "Built from scratch and used in workflows covering approximately 2,000 employees. Daily document throughput grew from 20–25 to 100–200 — a 4–8× operational improvement.",
+      url: "https://github.com/h1ziix/KazFoodV2",
+      linkLabel: "View source & architecture",
+      role: "Sole Fullstack Developer — product, frontend, backend, data and delivery",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Zod",
+        "Vitest"
+      ],
+      focus: [
+        "~2,000 employees in scope",
+        "13 protocol types",
+        "4–8× daily throughput",
+        "DOCX batch generation",
+        "70+ automated tests",
+        "End-to-end ownership"
+      ],
+      previewKind: "operations",
+      previewStats: [
+        { value: "13", label: "Protocol types" },
+        { value: "4–8×", label: "Daily throughput" },
+        { value: "~2K", label: "Employees covered" },
+        { value: "70+", label: "Automated tests" }
+      ]
+    },
+    {
       name: "XEAL",
       category: "Web Product / Fullstack Project",
       description:
-        "A polished product-facing web project shaped around clear presentation, frontend execution, integrations and production-oriented delivery.",
+        "A public product website delivered with responsive frontend implementation, product-focused presentation and integration support.",
       url: "https://relate-xeal.webflow.io/",
+      linkLabel: "Open live project",
       role: "Frontend implementation, product thinking, integration support",
       stack: ["Webflow", "Frontend", "Responsive UI", "Integrations"],
       focus: [
@@ -96,6 +133,7 @@ export const portfolio = {
       description:
         "An AI-oriented educational platform designed around documents, notes, events and structured knowledge workflows.",
       url: "#contact",
+      linkLabel: "Request project access",
       role: "Product architecture, frontend/backend integration, AI workflow design",
       stack: ["Next.js", "TypeScript", "AI Workflows", "Documents", "Structured Data"],
       focus: [
@@ -117,6 +155,7 @@ export const portfolio = {
       description:
         "A commercial web product built around responsive interface work, business requirements, contact paths and maintainable frontend structure.",
       url: "#contact",
+      linkLabel: "Request project access",
       role: "Frontend implementation, responsive UX, business logic",
       stack: ["React", "Responsive UI", "Business Logic", "Contact Integrations"],
       focus: [

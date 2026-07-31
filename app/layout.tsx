@@ -18,15 +18,15 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sultan-portfolio.local"),
   title: {
-    default: "Sultan - Fullstack & AI Engineer",
-    template: "%s | Sultan"
+    default: "Toksoz Sultan - Fullstack Developer",
+    template: "%s | Toksoz Sultan"
   },
   description:
-    "Premium interactive resume for Sultan, a Fullstack & AI Engineer building web products, backend systems and AI-powered automations.",
+    "Portfolio of Toksoz Sultan, a fullstack developer building web products, internal systems, document automation and AI integrations.",
   openGraph: {
-    title: "Sultan - Fullstack & AI Engineer",
+    title: "Toksoz Sultan - Fullstack Developer",
     description:
-      "Production-ready web products, backend systems and AI-powered automation.",
+      "Production web products, internal systems, document automation and practical AI integrations.",
     type: "website",
     images: [
       {

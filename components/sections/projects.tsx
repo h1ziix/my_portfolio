@@ -12,8 +12,8 @@ export function Projects() {
           <SectionLabel
             id="work-title"
             eyebrow="Selected work"
-            title="Product interfaces, AI workflow systems and commercial web delivery."
-            kicker="Each project is framed by role, constraints and delivery focus. Screenshots can be dropped into public/projects later without changing the content model."
+            title="Systems built around real workflows, measurable operations and production delivery."
+            kicker="Selected projects with clear ownership, technical scope and outcomes — from internal automation to public product interfaces."
           />
         </Reveal>
       </div>
@@ -37,6 +37,11 @@ export function Projects() {
               <p className="mt-6 max-w-xl text-pretty text-lg leading-8 text-zinc-300">
                 {project.description}
               </p>
+              {"impact" in project ? (
+                <p className="mt-6 max-w-xl border-l border-signal-violet pl-5 text-pretty text-base leading-7 text-zinc-200">
+                  {project.impact}
+                </p>
+              ) : null}
               <p className="mt-6 max-w-xl font-mono text-xs uppercase leading-6 tracking-caps text-zinc-500">
                 Role: {project.role}
               </p>
@@ -69,7 +74,7 @@ export function Projects() {
                 rel={project.url.startsWith("http") ? "noreferrer" : undefined}
                 className="mt-9"
               >
-                Open project
+                {project.linkLabel}
               </ActionLink>
             </div>
 

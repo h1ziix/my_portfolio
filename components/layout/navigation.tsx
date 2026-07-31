@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { portfolio } from "@/data/portfolio";
 
 export function Navigation() {
@@ -9,9 +11,29 @@ export function Navigation() {
       >
         <a
           href="#top"
-          className="focus-ring font-mono text-sm font-semibold uppercase tracking-caps text-white"
+          className="focus-ring group inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-caps text-white"
         >
-          {portfolio.person.displayName}/
+          <span>{portfolio.person.displayName}</span>
+          <span
+            aria-hidden="true"
+            className="relative h-6 w-6 shrink-0 transition duration-300 group-hover:rotate-3"
+          >
+            <Image
+              src="/brand/toksoz-keycap.gif"
+              alt=""
+              fill
+              unoptimized
+              sizes="24px"
+              className="object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
+            />
+            <Image
+              src="/brand/toksoz-keycap.webp"
+              alt=""
+              fill
+              sizes="24px"
+              className="hidden object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
+            />
+          </span>
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -42,6 +64,7 @@ export function Navigation() {
           </a>
         </div>
       </nav>
+      <ScrollProgress />
     </header>
   );
 }

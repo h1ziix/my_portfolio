@@ -62,7 +62,7 @@ export function Hero() {
             products,
             <br />
             systems &<br />
-            AI workflows.
+            automation.
           </motion.h1>
           <motion.p
             className="mt-7 max-w-2xl text-pretty text-base leading-8 text-zinc-300 md:text-xl"
@@ -90,7 +90,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
+            className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.32 }}
@@ -98,7 +98,54 @@ export function Hero() {
             <ActionLink href="#work" variant="primary">
               View selected work
             </ActionLink>
+            <ActionLink href={portfolio.person.resumeHref} download>
+              Download resume
+            </ActionLink>
             <ActionLink href="#contact">Contact me</ActionLink>
+            <motion.div
+              aria-hidden="true"
+              className="relative mx-auto h-20 w-20 shrink-0 sm:mx-1 sm:h-16 sm:w-16"
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      y: [0, -5, 0],
+                      rotate: [-1.5, 1.5, -1.5]
+                    }
+              }
+              transition={{
+                duration: 3.2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut"
+              }}
+            >
+              <Image
+                src="/brand/toksoz-keycap.gif"
+                alt=""
+                fill
+                unoptimized
+                sizes="80px"
+                className="object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
+              />
+              <Image
+                src="/brand/toksoz-keycap.webp"
+                alt=""
+                fill
+                sizes="80px"
+                className="hidden object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
+              />
+              <motion.span
+                className="absolute -right-1 top-0 font-mono text-base text-signal-violet"
+                animate={shouldReduceMotion ? undefined : { opacity: [0.25, 1, 0.25] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut"
+                }}
+              >
+                ✦
+              </motion.span>
+            </motion.div>
           </motion.div>
         </div>
 

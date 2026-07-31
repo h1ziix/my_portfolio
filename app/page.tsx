@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/layout/navigation";
+import { AmbientBackground } from "@/components/layout/ambient-background";
 import { About } from "@/components/sections/about";
 import { AiWorkflow } from "@/components/sections/ai-workflow";
 import { Contact } from "@/components/sections/contact";
@@ -11,8 +12,9 @@ import { Toolkit } from "@/components/sections/toolkit";
 export default function Home() {
   return (
     <>
+      <AmbientBackground />
       <Navigation />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <Experience />

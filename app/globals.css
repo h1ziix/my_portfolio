@@ -97,6 +97,191 @@ a {
   }
 }
 
+.ambient-route {
+  opacity: 0.36;
+  transform: translate3d(0, 0, 0);
+}
+
+.ambient-route-node {
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ambient-route-signal {
+  opacity: 0.72;
+  filter: drop-shadow(0 0 6px rgba(176, 38, 255, 0.9));
+  transform: translate(229.5px, 97.5px);
+}
+
+.ambient-corner {
+  opacity: 0.34;
+}
+
+.ambient-bracket {
+  opacity: 0.35;
+}
+
+.ambient-rail {
+  opacity: 0.55;
+}
+
+.ambient-rail-signal {
+  opacity: 0;
+}
+
+.ambient-particle {
+  opacity: 0.28;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-route {
+    animation: ambient-route-drift 12s ease-in-out infinite;
+  }
+
+  .ambient-route-node {
+    animation: ambient-route-node 3.2s ease-in-out infinite;
+  }
+
+  .ambient-route-signal {
+    animation: ambient-route-signal 7.5s linear infinite;
+  }
+
+  .ambient-corner {
+    animation: ambient-corner-drift 8s ease-in-out infinite;
+  }
+
+  .ambient-bracket {
+    animation: ambient-bracket-pulse 6.5s ease-in-out infinite;
+  }
+
+  .ambient-rail-signal {
+    animation: ambient-rail-signal 9s ease-in-out infinite;
+  }
+
+  .ambient-particle-a {
+    animation: ambient-particle-float 8.5s 0.4s ease-in-out infinite;
+  }
+
+  .ambient-particle-b {
+    animation: ambient-particle-float 11s 2.2s ease-in-out infinite reverse;
+  }
+
+  .ambient-particle-c {
+    animation: ambient-particle-float 9.5s 1.1s ease-in-out infinite;
+  }
+
+  .ambient-particle-d {
+    animation: ambient-particle-float 12s 3.4s ease-in-out infinite reverse;
+  }
+}
+
+@keyframes ambient-route-drift {
+  0%,
+  100% {
+    opacity: 0.36;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.58;
+    transform: translate3d(-10px, 8px, 0);
+  }
+}
+
+@keyframes ambient-route-node {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes ambient-route-signal {
+  0% {
+    opacity: 0;
+    transform: translate(15.5px, 221.5px);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(85.5px, 155.5px);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(157.5px, 178.5px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(229.5px, 97.5px);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(306.5px, 119.5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(368.5px, 45.5px);
+  }
+}
+
+@keyframes ambient-corner-drift {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate3d(6px, -5px, 0);
+  }
+}
+
+@keyframes ambient-bracket-pulse {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes ambient-rail-signal {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  12%,
+  86% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(74vh - 5px));
+  }
+}
+
+@keyframes ambient-particle-float {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  45% {
+    opacity: 0.58;
+    transform: translate3d(18px, -24px, 0) rotate(90deg);
+  }
+  70% {
+    opacity: 0.36;
+    transform: translate3d(-7px, -12px, 0) rotate(180deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

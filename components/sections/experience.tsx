@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { portfolio } from "@/data/portfolio";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -30,6 +31,29 @@ export function Experience() {
           <p className="mt-2 font-mono text-xs uppercase tracking-caps text-signal-violet">
             {experience.role}
           </p>
+          <div
+            aria-hidden="true"
+            className="relative mx-auto mt-8 h-44 w-full max-w-[220px] transition duration-500 hover:-rotate-1 hover:scale-[1.04] lg:mx-0"
+          >
+            <Image
+              src="/brand/toksoz-docs.gif"
+              alt=""
+              fill
+              unoptimized
+              sizes="220px"
+              className="object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
+            />
+            <Image
+              src="/brand/toksoz-docs.webp"
+              alt=""
+              fill
+              sizes="220px"
+              className="hidden object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
+            />
+            <span className="absolute right-4 top-2 font-mono text-xl text-signal-violet">
+              ✦
+            </span>
+          </div>
         </div>
 
         <div>

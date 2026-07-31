@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { portfolio } from "@/data/portfolio";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -10,7 +11,7 @@ export function About() {
           id="about-title"
           eyebrow="Approach"
           title={"I don't just ship code. I turn ambiguous problems into working systems."}
-          kicker="I use AI as an acceleration layer inside a deliberate engineering process: understanding requirements, exploring constraints, designing interfaces, reviewing generated code and validating the final result."
+          kicker="I start with the business workflow, map the data and constraints, then own the implementation from interface and backend logic through testing and delivery."
         />
       </Reveal>
 
@@ -20,6 +21,29 @@ export function About() {
             {portfolio.person.profile} My work sits between product thinking,
             backend reliability, interface quality and practical automation.
           </p>
+          <div
+            aria-hidden="true"
+            className="relative mx-auto mt-8 h-56 w-full max-w-[280px] transition duration-500 hover:scale-[1.03] sm:mx-0"
+          >
+            <Image
+              src="/brand/toksoz-keycap.gif"
+              alt=""
+              fill
+              unoptimized
+              sizes="280px"
+              className="object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
+            />
+            <Image
+              src="/brand/toksoz-keycap.webp"
+              alt=""
+              fill
+              sizes="280px"
+              className="hidden object-contain mix-blend-screen [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
+            />
+            <span className="absolute right-4 top-3 font-mono text-2xl text-signal-violet">
+              ✦
+            </span>
+          </div>
         </Reveal>
 
         <ol className="grid border-t hairline">
