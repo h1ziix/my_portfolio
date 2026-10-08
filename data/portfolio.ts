@@ -1,87 +1,101 @@
-import {
-  Bot,
-  BrainCircuit,
-  Code2,
-  Database,
-  GitBranch,
-  Layers3,
-  Mail,
-  MessageCircle,
-  Server,
-  Workflow
-} from "lucide-react";
+import type { Portfolio } from "@/types/portfolio";
 
-export const portfolio = {
+export const portfolio: Portfolio = {
   person: {
     name: "Toksoz Sultan",
     displayName: "TOKSOZ SULTAN",
-    title: "Fullstack Developer / Automation & AI Integrations",
-    positioning: "Fullstack Developer",
+    title: "AI Product Developer",
+    positioning: "AI Product Developer",
     experience: "2.5 years of development experience",
-    age: "18 years old",
     location: "Almaty, Kazakhstan",
     availability: "Available for opportunities",
     profile:
       "I build web products, backend systems and internal tools that automate complex business processes.",
     summary:
-      "Fullstack developer focused on production web products, internal systems, document automation and practical AI integrations.",
+      "Full-stack AI products, from interfaces and data to research, integrations, human approvals and controlled actions.",
     resumeHref: "/resume/toksoz-sultan-resume.pdf"
   },
   navigation: [
     { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
-    { label: "Stack", href: "#stack" },
-    { label: "AI Workflow", href: "#ai-workflow" },
+    { label: "Skills", href: "#skills" },
+    { label: "Process", href: "#process" },
     { label: "Contact", href: "#contact" }
   ],
-  heroMeta: ["18 years old", "2.5 years experience", "Remote / hybrid · Almaty"],
-  approach: [
-    "Understand the business problem",
-    "Decompose the system",
-    "Design the architecture",
-    "Implement end to end",
-    "Validate, test, refine",
-    "Ship and iterate"
-  ],
-  experience: [
-    {
-      company: "KazEcoFood",
-      role: "Fullstack Developer / Automation Engineer",
-      period: "Current role",
-      description:
-        "Built an internal fullstack platform from scratch for workplace assessment workflows and regulated DOCX document generation.",
-      facts: [
-        "Covered the full product cycle: requirements, UX, frontend, backend, data model, testing and deployment",
-        "Centralized projects, workplace data and measurements across 13 protocol types",
-        "Implemented authentication, Supabase storage, autosave and save-conflict handling",
-        "Automated shared fields, workplace synchronization, validation and DOCX batch export",
-        "Supported assessment workflows covering approximately 2,000 employees",
-        "Increased daily document throughput from 20–25 to 100–200"
-      ],
-      capabilities: [
-        "13 protocol types",
-        "~2,000 employees",
-        "4–8× throughput",
-        "70+ automated tests",
-        "Supabase RLS",
-        "DOCX generation",
-        "Data synchronization",
-        "End-to-end ownership"
-      ]
-    }
-  ],
+  heroMeta: ["Full-stack", "Agentic AI", "Automation"],
   projects: [
     {
+      slug: "agentic-ops",
+      name: "Agentic Ops",
+      subtitle: "Agentic AI sales operations",
+      summary:
+        "A full-stack workspace that turns sales goals into company research, lead qualification and outreach drafts, with human approval before separate execution.",
+      hierarchy: "featured",
+      role: "Full-stack development, agent architecture and operational UI",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Zod",
+        "Gemini",
+        "Tavily",
+        "Trigger.dev"
+      ],
+      releaseStatus: {
+        label: "Release 1.0 candidate",
+        description:
+          "Deployed application; full integration, worker and external-execution acceptance remains in progress."
+      },
+      accessStatus: {
+        label: "Public sample demo",
+        description:
+          "Fictional records. The demo makes no paid AI calls, sends no email and performs no CRM writes."
+      },
+      links: {
+        demo: "https://agentic-ops-gold.vercel.app/demo/dashboard",
+        source: "https://github.com/h1ziix/Agentic-Ops"
+      },
+      media: [
+        {
+          type: "image",
+          src: "/projects/agentic-ops-demo.png",
+          alt: "Agentic Ops dashboard displaying its labelled fictional sample workspace",
+          width: 1440,
+          height: 1000,
+          caption: "Public sample workspace · fictional records"
+        }
+      ],
+      features: [
+        "Cited research and lead qualification",
+        "Typed agents with persisted workflow state",
+        "Exact approval followed by separate execution"
+      ],
+      limitations: [
+        "Full Gmail, HubSpot and durable-worker acceptance remains pending.",
+        "Sample records do not represent customer outcomes or live provider execution."
+      ],
+      evidence: [
+        {
+          label: "Source, architecture and release status",
+          source: "https://github.com/h1ziix/Agentic-Ops"
+        },
+        {
+          label: "Deployment and acceptance boundaries",
+          source:
+            "https://github.com/h1ziix/Agentic-Ops/blob/main/docs/deployment-progress.md"
+        }
+      ]
+    },
+    {
+      slug: "kazecofood",
       name: "KazEcoFood",
-      category: "Flagship Case / Internal Operations",
-      description:
-        "A production document automation platform for workplace assessment. It centralizes organization, workplace and measurement data, synchronizes them across regulated protocols, validates technical fields and generates complete DOCX packages.",
-      impact:
-        "Built from scratch and used in workflows covering approximately 2,000 employees. Daily document throughput grew from 20–25 to 100–200 — a 4–8× operational improvement.",
-      url: "https://github.com/h1ziix/KazFoodV2",
-      linkLabel: "View source & architecture",
+      subtitle: "Internal document automation",
+      summary:
+        "An internal workplace-assessment platform that synchronizes organization, workplace and measurement data, validates fields and exports regulated DOCX packages.",
+      hierarchy: "major",
       role: "Sole Fullstack Developer — product, frontend, backend, data and delivery",
-      stack: [
+      technologies: [
         "Next.js",
         "TypeScript",
         "Supabase",
@@ -89,191 +103,183 @@ export const portfolio = {
         "Zod",
         "Vitest"
       ],
-      focus: [
-        "~2,000 employees in scope",
-        "13 protocol types",
-        "4–8× daily throughput",
-        "DOCX batch generation",
-        "70+ automated tests",
-        "End-to-end ownership"
+      releaseStatus: {
+        label: "Internal production tool",
+        description: "Used in workplace-assessment operations, as reported by the developer."
+      },
+      accessStatus: {
+        label: "Public source",
+        description: "The operational workspace is internal; the source repository is public."
+      },
+      links: {
+        source: "https://github.com/h1ziix/KazFoodV2"
+      },
+      media: [],
+      features: [
+        "13 document types",
+        "Shared-field and workplace synchronization",
+        "Validation and DOCX batch generation"
       ],
-      previewKind: "operations",
-      previewStats: [
-        { value: "13", label: "Protocol types" },
-        { value: "4–8×", label: "Daily throughput" },
-        { value: "~2K", label: "Employees covered" },
-        { value: "70+", label: "Automated tests" }
+      outcomes: [
+        {
+          value: "20–25 → 100–200",
+          label: "Documents per day",
+          basis: "Developer-reported operational throughput."
+        },
+        {
+          value: "~2,000",
+          label: "Employees in assessment scope",
+          basis: "Developer-reported workflow scope."
+        },
+        {
+          value: "70+",
+          label: "Authored automated tests",
+          basis: "Test declarations found in source; this is not a claim of a verified test run."
+        }
       ]
     },
     {
+      slug: "xeal",
       name: "XEAL",
-      category: "Web Product / Fullstack Project",
-      description:
-        "A public product website delivered with responsive frontend implementation, product-focused presentation and integration support.",
-      url: "https://relate-xeal.webflow.io/",
-      linkLabel: "Open live project",
-      role: "Frontend implementation, product thinking, integration support",
-      stack: ["Webflow", "Frontend", "Responsive UI", "Integrations"],
-      focus: [
-        "Product thinking",
-        "Frontend implementation",
-        "Polished UI",
-        "Integrations",
-        "Production-oriented delivery"
+      subtitle: "Commercial Webflow website",
+      summary:
+        "A responsive product website for XEAL, with frontend implementation and integration support.",
+      hierarchy: "supporting",
+      role: "Frontend implementation and integration support",
+      technologies: ["Webflow"],
+      releaseStatus: { label: "Live website" },
+      accessStatus: { label: "Public website" },
+      links: { demo: "https://relate-xeal.webflow.io/" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/xeal-preview.mp4",
+          alt: "XEAL product website video preview"
+        }
       ],
-      previewKind: "commerce",
-      previewAsset: "/projects/xeal-preview.mp4",
-      previewType: "video",
-      previewAlt: "XEAL product video preview",
-      imageTodo: "TODO: Add project screenshot to public/projects/xeal.png"
+      features: ["Responsive product presentation", "Frontend integration support"]
     },
     {
+      slug: "campusforge",
       name: "CampusForge",
-      category: "AI / Education / SaaS",
-      description:
-        "An AI-oriented educational platform designed around documents, notes, events and structured knowledge workflows.",
-      url: "#contact",
-      linkLabel: "Request project access",
-      role: "Product architecture, frontend/backend integration, AI workflow design",
-      stack: ["Next.js", "TypeScript", "AI Workflows", "Documents", "Structured Data"],
-      focus: [
-        "AI workflows",
-        "Document context",
-        "Structured information",
-        "Concise and expanded AI outputs",
-        "Scalable structure"
+      subtitle: "AI-assisted educational workspace",
+      summary:
+        "An educational platform for documents, notes and events, with structured AI knowledge workflows.",
+      hierarchy: "supporting",
+      role: "Product architecture, frontend/backend integration and AI workflow design",
+      technologies: ["Next.js", "TypeScript"],
+      releaseStatus: { label: "Release status not documented" },
+      accessStatus: { label: "Access on request" },
+      links: { access: "#contact" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/campusforge-preview.mp4",
+          alt: "CampusForge educational workspace video preview"
+        }
       ],
-      previewKind: "knowledge",
-      previewAsset: "/projects/campusforge-preview.mp4",
-      previewType: "video",
-      previewAlt: "CampusForge product video preview",
-      imageTodo: "TODO: Add project screenshot to public/projects/campusforge.png"
+      features: ["Documents, notes and events", "Concise and expanded AI outputs"],
+      limitations: ["Public source and demo access are not supplied in the current project material."]
     },
     {
+      slug: "i-like-yogurt",
       name: "I Like & Yogurt",
-      category: "Commercial Web Product",
-      description:
-        "A commercial web product built around responsive interface work, business requirements, contact paths and maintainable frontend structure.",
-      url: "#contact",
-      linkLabel: "Request project access",
-      role: "Frontend implementation, responsive UX, business logic",
-      stack: ["React", "Responsive UI", "Business Logic", "Contact Integrations"],
-      focus: [
-        "Responsive UI",
-        "Real business requirements",
-        "Links and contact integrations",
-        "Opening/closing status logic",
-        "Polished visual identity",
-        "Maintainable frontend"
+      subtitle: "Commercial React website",
+      summary:
+        "A responsive business website with contact links and opening-status logic.",
+      hierarchy: "supporting",
+      role: "Frontend implementation, responsive UX and business logic",
+      technologies: ["React"],
+      releaseStatus: { label: "Release status not documented" },
+      accessStatus: { label: "Access on request" },
+      links: { access: "#contact" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/i-like-yogurt-preview.mp4",
+          alt: "I Like & Yogurt business website video preview"
+        }
       ],
-      previewKind: "retail",
-      previewAsset: "/projects/i-like-yogurt-preview.mp4",
-      previewType: "video",
-      previewAlt: "I Like & Yogurt product video preview",
-      imageTodo: "TODO: Add project screenshot to public/projects/i-like-yogurt.png"
+      features: ["Responsive business information", "Contact links", "Opening-status logic"],
+      limitations: ["Public source and demo access are not supplied in the current project material."]
     }
   ],
-  stack: [
+  experience: [
+    {
+      company: "KazEcoFood",
+      role: "Fullstack Developer / Automation Engineer",
+      period: "Current role",
+      responsibilities: [
+        "Owned requirements, UX, frontend, backend, data modelling, testing and deployment of an internal assessment platform.",
+        "Implemented authentication, Supabase storage, autosave and save-conflict handling.",
+        "Automated shared-field synchronization, validation and DOCX batch export for workplace-assessment teams."
+      ]
+    }
+  ],
+  skills: [
     {
       area: "Frontend",
-      icon: Code2,
       items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"]
     },
     {
-      area: "Backend",
-      icon: Server,
-      items: ["Node.js", "REST API", "Python", "SQL"]
+      area: "Backend & Data",
+      items: ["Node.js", "Python", "SQL", "PostgreSQL", "Supabase", "MySQL"]
     },
     {
-      area: "Data",
-      icon: Database,
-      items: ["PostgreSQL", "Supabase", "MySQL"]
-    },
-    {
-      area: "Infra / Tools",
-      icon: GitBranch,
-      items: ["Git", "GitHub", "Docker", "CI/CD"]
-    },
-    {
-      area: "AI",
-      icon: BrainCircuit,
+      area: "AI / Agents",
       items: [
-        "Codex",
-        "ChatGPT",
-        "Claude Code",
-        "Anthropic API",
+        "Typed agent orchestration",
+        "Structured output validation",
+        "Evidence-backed research",
+        "Human approval boundaries",
+        "Gemini",
         "OpenAI API",
-        "LLM Integration",
-        "AI Workflows"
+        "Anthropic API"
       ]
+    },
+    {
+      area: "Automation & Integrations",
+      items: ["REST APIs", "Tavily", "Gmail / HubSpot OAuth", "Trigger.dev", "DOCX generation", "Data synchronization"]
+    },
+    {
+      area: "Tools & Delivery",
+      items: ["Git", "GitHub", "Docker", "CI/CD", "Vitest", "Automated testing"]
     }
   ],
-  aiWorkflow: [
+  assistants: ["Codex", "Claude Code", "ChatGPT"],
+  process: [
     {
-      label: "Context",
-      body: "Understand requirements and inspect the codebase"
+      title: "Understand",
+      description: "Map the business workflow, inspect existing code and define the data and constraints."
     },
     {
-      label: "Decompose",
-      body: "Break complex tasks into verifiable units"
+      title: "Build",
+      description: "Design the interfaces and architecture, then implement end to end with AI-assisted development."
     },
     {
-      label: "Architect",
-      body: "Define interfaces, data flow and constraints"
+      title: "Verify",
+      description: "Review changes myself and check behavior, edge cases, security and performance."
     },
     {
-      label: "Build",
-      body: "Use AI tools to accelerate implementation"
-    },
-    {
-      label: "Verify",
-      body: "Review generated code, edge cases, security and performance"
-    },
-    {
-      label: "Ship",
-      body: "Test, integrate and deliver production-ready changes"
+      title: "Ship",
+      description: "Test, integrate and deploy, then refine the system from real usage."
     }
-  ],
-  agentLines: [
-    "inspect codebase",
-    "map dependencies",
-    "propose architecture",
-    "implement incrementally",
-    "run checks",
-    "inspect failures",
-    "refactor",
-    "ship"
-  ],
-  toolkit: [
-    { label: "Daily Workflow", value: "Codex / Claude Code / ChatGPT", icon: Bot },
-    { label: "Core", value: "TypeScript / Node.js / Next.js", icon: Layers3 },
-    { label: "Data", value: "PostgreSQL / Supabase", icon: Database },
-    { label: "AI", value: "LLM APIs / AI Integrations", icon: BrainCircuit },
-    { label: "Focus", value: "Automation / Products / Backend / AI", icon: Workflow }
   ],
   socials: [
     {
       label: "Email",
       href: "mailto:toksozzsultan@icloud.com",
-      value: "toksozzsultan@icloud.com",
-      icon: Mail,
-      isTodo: false
+      value: "toksozzsultan@icloud.com"
     },
     {
       label: "Telegram",
       href: "https://t.me/conf1denc",
-      value: "@conf1denc",
-      icon: MessageCircle,
-      isTodo: false
+      value: "@conf1denc"
     },
     {
       label: "GitHub",
       href: "https://github.com/h1ziix",
-      value: "https://github.com/h1ziix",
-      icon: GitBranch,
-      isTodo: false
+      value: "github.com/h1ziix"
     }
   ]
-} as const;
-
-export type Project = (typeof portfolio.projects)[number];
+};

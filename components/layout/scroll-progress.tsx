@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useMotionPreference } from "@/lib/use-motion-preference";
 
 export function ScrollProgress() {
-  const shouldReduceMotion = useReducedMotion();
+  const canAnimate = useMotionPreference();
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -11,15 +12,11 @@ export function ScrollProgress() {
     mass: 0.18
   });
 
-  if (shouldReduceMotion) {
-    return null;
-  }
-
   return (
     <motion.div
       aria-hidden="true"
-      className="absolute -bottom-px left-0 h-px w-full origin-left bg-signal-violet shadow-[0_0_10px_rgba(176,38,255,0.85)]"
-      style={{ scaleX: progress }}
+      className="absolute -bottom-px left-0 h-px w-full origin-left bg-accent motion-reduce:hidden"
+      style={{ scaleX: canAnimate ? progress : 0 }}
     />
   );
 }

@@ -7,23 +7,10 @@ type SectionLabelProps = {
 
 export function SectionLabel({ eyebrow, title, kicker, id }: SectionLabelProps) {
   return (
-    <div className="grid gap-5 border-t hairline pt-5 md:grid-cols-[0.36fr_1fr]">
-      <p className="font-mono text-xs uppercase tracking-caps text-signal-violet">
-        {eyebrow}
-      </p>
-      <div>
-        <h2
-          id={id}
-          className="max-w-4xl text-balance text-4xl font-semibold leading-[0.95] text-white md:text-6xl"
-        >
-          {title}
-        </h2>
-        {kicker ? (
-          <p className="mt-5 max-w-2xl text-pretty text-base leading-7 text-zinc-400 md:text-lg">
-            {kicker}
-          </p>
-        ) : null}
-      </div>
+    <div className="min-w-0 border-t border-border pt-6">
+      <p className="font-mono text-xs uppercase tracking-caps text-accent-text">{eyebrow}</p>
+      <h2 id={id} className="mt-3 max-w-3xl text-balance text-section font-semibold leading-tight tracking-tight text-text-primary">{title}</h2>
+      {kicker ? <p className="text-width mt-3 text-pretty text-base leading-7 text-text-secondary md:text-lg">{kicker}</p> : null}
     </div>
   );
 }

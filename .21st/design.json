@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "project": {
+    "name": "sultan-portfolio",
+    "productType": "Editorial AI developer portfolio",
+    "stack": [
+      "nextjs",
+      "react",
+      "tailwind-v3"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "app/globals.css"
+    ],
+    "components": [
+      "components/ui"
+    ],
+    "assets": [
+      "public/brand"
+    ],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "--text-primary": {
+        "value": "#24252a",
+        "source": "app/globals.css"
+      },
+      "--text-secondary": {
+        "value": "#54565f",
+        "source": "app/globals.css"
+      },
+      "--text-muted": {
+        "value": "#686a73",
+        "source": "app/globals.css"
+      },
+      "--border": {
+        "value": "#ddded7",
+        "source": "app/globals.css"
+      },
+      "--border-strong": {
+        "value": "#b3b5af",
+        "source": "app/globals.css"
+      },
+      "--accent": {
+        "value": "#5b4acb",
+        "source": "app/globals.css"
+      },
+      "--accent-hover": {
+        "value": "#4939af",
+        "source": "app/globals.css"
+      },
+      "--accent-subtle": {
+        "value": "#ece9fb",
+        "source": "app/globals.css"
+      },
+      "--accent-text": {
+        "value": "#5140b7",
+        "source": "app/globals.css"
+      },
+      "--on-accent": {
+        "value": "#ffffff",
+        "source": "app/globals.css"
+      },
+      "--canvas": {
+        "value": "#f7f7f2",
+        "source": "app/globals.css"
+      },
+      "--surface": {
+        "value": "#ffffff",
+        "source": "app/globals.css"
+      },
+      "--surface-subtle": {
+        "value": "#efefe9",
+        "source": "app/globals.css"
+      },
+      "--success": {
+        "value": "#286548",
+        "source": "app/globals.css"
+      },
+      "--warning": {
+        "value": "#80551c",
+        "source": "app/globals.css"
+      }
+    },
+    "typography": {
+      "--container-text": {
+        "value": "70ch",
+        "source": "app/globals.css"
+      },
+      "--type-display": {
+        "value": "clamp(2.5rem, 5.2vw, 4.5rem)",
+        "source": "app/globals.css"
+      },
+      "--type-section": {
+        "value": "clamp(2rem, 3vw, 2.5rem)",
+        "source": "app/globals.css"
+      },
+      "--type-card": {
+        "value": "clamp(1.5rem, 2.4vw, 2rem)",
+        "source": "app/globals.css"
+      }
+    },
+    "spacing": {
+      "--space-1": {
+        "value": "4px",
+        "source": "app/globals.css"
+      },
+      "--space-2": {
+        "value": "8px",
+        "source": "app/globals.css"
+      },
+      "--space-3": {
+        "value": "12px",
+        "source": "app/globals.css"
+      },
+      "--space-4": {
+        "value": "16px",
+        "source": "app/globals.css"
+      },
+      "--space-6": {
+        "value": "24px",
+        "source": "app/globals.css"
+      },
+      "--space-8": {
+        "value": "32px",
+        "source": "app/globals.css"
+      },
+      "--space-12": {
+        "value": "48px",
+        "source": "app/globals.css"
+      },
+      "--space-16": {
+        "value": "64px",
+        "source": "app/globals.css"
+      },
+      "--space-22": {
+        "value": "88px",
+        "source": "app/globals.css"
+      },
+      "--section-space": {
+        "value": "var(--space-22)",
+        "source": "app/globals.css"
+      },
+      "--gutter": {
+        "value": "var(--space-12)",
+        "source": "app/globals.css"
+      },
+      "--container-wide": {
+        "value": "1280px",
+        "source": "app/globals.css"
+      },
+      "--container-content": {
+        "value": "1088px",
+        "source": "app/globals.css"
+      }
+    },
+    "radius": {
+      "--radius-control": {
+        "value": "6px",
+        "source": "app/globals.css"
+      },
+      "--radius-surface": {
+        "value": "10px",
+        "source": "app/globals.css"
+      }
+    },
+    "shadows": {
+      "--shadow-media": {
+        "value": "0 8px 24px rgb(36 37 42 / 0.05)",
+        "source": "app/globals.css"
+      }
+    },
+    "motion": {},
+    "density": "compact editorial"
+  },
+  "components": {
+    "installed": [
+      "action-link",
+      "reveal",
+      "section-label"
+    ],
+    "preferredPrimitives": [],
+    "patterns": [
+      "Featured overview with real sample media",
+      "Major overview with sourced operational scope",
+      "Compact supporting project rows",
+      "Grouped engineering skills with secondary AI assistants"
+    ]
+  },
+  "constraints": {
+    "must": [
+      "Off-white canvas, graphite typography, restrained violet accent",
+      "Preserve Space Grotesk and IBM Plex Mono",
+      "Selected Work immediately after Hero",
+      "Featured / major / supporting project hierarchy",
+      "Visible SSR baseline and reduced motion support"
+    ],
+    "avoid": [
+      "Dark full-page gradients, glow, glassmorphism and looping simulations",
+      "Invented metrics, dates, technologies and links",
+      "Full Agentic Ops flagship or case-study implementation before Stage 04"
+    ]
+  },
+  "decisions": [
+    "Stage 02: one coherent light system with semantic CSS colors and 48–88px section spacing.",
+    "Reuse ActionLink, SectionLabel and hydration-safe Reveal; use compact Project Index row composition as inspiration for supporting work.",
+    "Agentic Ops is a basic featured overview with an actual sample screenshot, KazEcoFood a major overview, and remaining work compact rows.",
+    "Stage 03: server-rendered AI Product Developer Hero; asymmetric desktop composition, stacked tablet, real approval-inbox evidence with explicit sample status and mobile art direction.",
+    "Hero uses existing Framer Motion only for a short post-hydration transform entrance; no hidden SSR copy, looping backgrounds or pointer parallax. Preview links to the existing Agentic Ops overview."
+  ],
+  "evidence": [
+    {
+      "fact": "components.installed",
+      "source": "components/ui"
+    },
+    {
+      "fact": "design.colorMode:light",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v3",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-10-04T15:24:18.93Z"
+}

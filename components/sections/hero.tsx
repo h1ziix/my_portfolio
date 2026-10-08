@@ -1,166 +1,76 @@
-"use client";
-
-import { motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
-import Image from "next/image";
-import { useRef, type PointerEvent } from "react";
-import { AIWorkflowTerminal } from "@/components/sections/ai-workflow-terminal";
+import Image, { getImageProps } from "next/image";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 import { ActionLink } from "@/components/ui/action-link";
+import { HeroEntrance } from "@/components/sections/hero-entrance";
 
 export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [3, -3]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-4, 4]);
-
-  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
-    if (shouldReduceMotion || !ref.current) {
-      return;
-    }
-
-    const rect = ref.current.getBoundingClientRect();
-    mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
-  }
+  const github = portfolio.socials.find((social) => social.label === "GitHub");
+  const mobilePreview = getImageProps({
+    src: "/agentic-ops/hero-approvals-mobile.webp",
+    alt: "",
+    width: 840,
+    height: 650,
+    sizes: "calc(100vw - 32px)",
+    quality: 90
+  }).props;
 
   return (
-    <section
-      id="top"
-      className="relative flex min-h-screen overflow-hidden pt-16"
-      aria-labelledby="hero-title"
-    >
-      <Image
-        src="/technical-system-texture.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="pointer-events-none object-cover opacity-45"
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_38%,rgba(176,38,255,0.12),transparent_34rem),linear-gradient(90deg,rgba(8,8,8,0.78),rgba(8,8,8,0.42)_48%,rgba(8,8,8,0.88))]" />
-      <div className="shell relative z-10 grid min-h-[calc(100vh-4rem)] items-center gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_420px] xl:grid-cols-[minmax(0,1fr)_480px]">
-        <div>
-          <motion.p
-            className="font-mono text-xs uppercase tracking-caps text-signal-violet"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
-            {portfolio.person.title}
-          </motion.p>
-          <motion.h1
-            id="hero-title"
-            className="mt-6 max-w-5xl text-balance text-5xl font-semibold uppercase leading-[0.86] text-white sm:text-6xl md:text-8xl xl:text-[7.5rem] 2xl:text-[8.5rem]"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          >
-            I build
-            <br />
-            products,
-            <br />
-            systems &<br />
-            automation.
-          </motion.h1>
-          <motion.p
-            className="mt-7 max-w-2xl text-pretty text-base leading-8 text-zinc-300 md:text-xl"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.16 }}
-          >
-            {portfolio.person.summary}
-          </motion.p>
-
-          <motion.div
-            className="mt-10 grid max-w-3xl gap-3 border-y hairline py-5 sm:grid-cols-3"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.24 }}
-          >
-            {portfolio.heroMeta.map((item) => (
-              <p
-                key={item}
-                className="font-mono text-xs uppercase tracking-caps text-zinc-400"
-              >
-                {item}
-              </p>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.32 }}
-          >
-            <ActionLink href="#work" variant="primary">
-              View selected work
-            </ActionLink>
-            <ActionLink href={portfolio.person.resumeHref} download>
-              Download resume
-            </ActionLink>
-            <ActionLink href="#contact">Contact me</ActionLink>
-            <motion.div
-              aria-hidden="true"
-              className="relative mx-auto h-20 w-20 shrink-0 sm:mx-1 sm:h-16 sm:w-16"
-              animate={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      y: [0, -5, 0],
-                      rotate: [-1.5, 1.5, -1.5]
-                    }
-              }
-              transition={{
-                duration: 3.2,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            >
-              <Image
-                src="/brand/toksoz-keycap.gif"
-                alt=""
-                fill
-                unoptimized
-                sizes="80px"
-                className="object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:hidden"
-              />
-              <Image
-                src="/brand/toksoz-keycap.webp"
-                alt=""
-                fill
-                sizes="80px"
-                className="hidden object-contain [mask-image:radial-gradient(circle,black_58%,transparent_94%)] motion-reduce:block"
-              />
-              <motion.span
-                className="absolute -right-1 top-0 font-mono text-base text-signal-violet"
-                animate={shouldReduceMotion ? undefined : { opacity: [0.25, 1, 0.25] }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut"
-                }}
-              >
-                ✦
-              </motion.span>
-            </motion.div>
-          </motion.div>
+    <section id="top" className="hero" aria-labelledby="hero-title">
+      <div className="shell hero-grid">
+        <div className="min-w-0">
+          <div data-hero-reveal="role">
+            <p className="hero-role">{portfolio.person.positioning}</p>
+            <p className="hero-specializations">{portfolio.heroMeta.join(" · ")}</p>
+          </div>
+          <h1 id="hero-title" data-hero-reveal="headline" className="hero-headline text-balance">I build AI products, agentic workflows and automation.</h1>
+          <p data-hero-reveal="description" className="hero-description text-pretty">{portfolio.person.summary}</p>
+          <div data-hero-reveal="actions" className="hero-actions">
+            <ActionLink href="#work" variant="primary">View selected work</ActionLink>
+            <ActionLink href={portfolio.person.resumeHref} download>Resume</ActionLink>
+          </div>
+          <div className="hero-support">
+            <p className="inline-flex min-w-0 items-center gap-2">
+              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
+              {portfolio.person.availability}
+            </p>
+            {github ? <a href={github.href} target="_blank" rel="noreferrer" className="focus-ring inline-flex min-h-8 items-center gap-1.5 text-text-secondary transition-colors hover:text-accent-text">GitHub<ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" /><span className="sr-only"> (opens in a new tab)</span></a> : null}
+          </div>
         </div>
-
-        <motion.div
-          ref={ref}
-          onPointerMove={handlePointerMove}
-          style={shouldReduceMotion ? undefined : { rotateX, rotateY }}
-          className="min-h-[380px] transform-gpu border hairline bg-black/24 p-5 shadow-violet sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[560px]"
-          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
-          animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <AIWorkflowTerminal />
-        </motion.div>
+        <figure data-hero-reveal="preview" className="hero-preview min-w-0">
+          <a href="#agentic-ops" className="hero-preview-link focus-ring group" aria-label="Explore Agentic Ops in selected work">
+            <div className="hero-preview-heading">
+              <div className="min-w-0">
+                <p className="font-medium text-text-primary">Agentic Ops</p>
+                <p className="mt-0.5 text-[11px] leading-5 text-text-secondary">Public sample demo · Fictional records</p>
+              </div>
+              <ArrowDown aria-hidden="true" className="h-4 w-4 shrink-0 text-accent-text" />
+            </div>
+            <div className="hero-preview-image">
+              <picture>
+                <source media="(max-width: 639px)" srcSet={mobilePreview.srcSet} sizes={mobilePreview.sizes} width={840} height={650} />
+                <Image
+                  src="/agentic-ops/hero-approvals.webp"
+                  alt="Agentic Ops approval inbox showing two sample outreach drafts held for human review. The interface is labelled DEMO / SAMPLE with fictional records."
+                  width={1208}
+                  height={900}
+                  sizes="(min-width: 1376px) 636px, (min-width: 1200px) 46vw, (min-width: 864px) 800px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 32px)"
+                  quality={90}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="h-auto w-full"
+                />
+              </picture>
+            </div>
+            <div className="hero-preview-footer">
+              <span>Human approval first</span>
+              <span className="hero-preview-intent">Explore project<ArrowDown aria-hidden="true" className="h-3 w-3" /></span>
+            </div>
+          </a>
+          <figcaption className="sr-only">Actual product interface. The public demo makes no AI calls, sends no email and performs no CRM writes.</figcaption>
+        </figure>
       </div>
+      <HeroEntrance />
     </section>
   );
 }
