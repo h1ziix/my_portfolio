@@ -32,6 +32,7 @@ const siteDescription =
 
 // Resolve the saved or system preference before the page paints.
 const themeBootstrap = `(function(){var p='system';try{var s=localStorage.getItem('toksoz-theme');if(s==='light'||s==='dark')p=s;}catch(e){}var t=p==='system'?(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;var r=document.documentElement;r.dataset.theme=t;r.dataset.themePreference=p;r.style.colorScheme=t;})();`;
+const motionBootstrap = `(function(){var p='system';try{var s=localStorage.getItem('toksoz-motion');if(s==='full'||s==='reduced')p=s;}catch(e){}var r=document.documentElement;r.dataset.motionPreference=p;r.dataset.motion=(p==='reduced'||(p==='system'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))?'reduced':'full';})();`;
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -75,8 +76,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${golosText.variable} ${sofiaSansCondensed.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <head><script id="theme-bootstrap" dangerouslySetInnerHTML={{ __html: themeBootstrap }} /></head>
+    <html lang="en" data-motion="reduced" className={`${golosText.variable} ${sofiaSansCondensed.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head><script id="theme-bootstrap" dangerouslySetInnerHTML={{ __html: themeBootstrap }} /><script id="motion-bootstrap" dangerouslySetInnerHTML={{ __html: motionBootstrap }} /></head>
       <body className="font-sans antialiased"><StarField />{children}</body>
     </html>
   );

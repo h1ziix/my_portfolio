@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode, type CSSProperties } from "react";
+import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 /** Content remains visible with JS disabled. Only off-screen content is prepared to enter. */
 export function RevealInView({
@@ -17,12 +18,8 @@ export function RevealInView({
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const element = ref.current;
-    if (
-      !element ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    if (element.getBoundingClientRect().top > window.innerHeight)
+    if (!element) return;
+    if (!isMotionReduced() && element.getBoundingClientRect().top > window.innerHeight)
       element.dataset.reveal = "pending";
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,7 +31,17 @@ export function RevealInView({
       { threshold: 0.05 },
     );
     observer.observe(element);
-    return () => observer.disconnect();
+    const unsubscribe = subscribeToMotionPreference(() => {
+      if (!isMotionReduced() && element.dataset.reveal !== "visible") {
+        if (element.getBoundingClientRect().top > window.innerHeight)
+          element.dataset.reveal = "pending";
+        observer.observe(element);
+      }
+    });
+    return () => {
+      observer.disconnect();
+      unsubscribe();
+    };
   }, []);
   return (
     <div

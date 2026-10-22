@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 type Star = {
   x: number;
@@ -102,7 +103,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
     if (!context) return;
     const local = variant === "dark";
     const section = local ? canvas.parentElement : null;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reduced = isMotionReduced();
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     const stars: Star[] = [];
     const crystals: Star[] = [];
@@ -255,7 +256,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       context!.restore();
     }
 
-    function paint(delta: number, still = reduced.matches) {
+    function paint(delta: number, still = reduced) {
       if (!width || !height) return;
       context!.setTransform(dpr, 0, 0, dpr, 0, 0);
       context!.clearRect(0, 0, width, height);
@@ -383,7 +384,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       const covered =
         !local && scroll >= coveredTop && scroll + height <= coveredBottom;
       return (
-        !disposed && !document.hidden && inView && !reduced.matches && !covered
+        !disposed && !document.hidden && inView && !reduced && !covered
       );
     }
     function tick(timestamp: number) {
@@ -462,6 +463,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       paint(0);
     }
     function onMotion() {
+      reduced = isMotionReduced();
       flare = meteor = null;
       nextFlare = elapsed + random(mobile ? 7 : 4, mobile ? 10 : 7);
       nextMeteor = elapsed + random(14, 22);
@@ -488,7 +490,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
     document.addEventListener("visibilitychange", syncLoop);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", queueResize, { passive: true });
-    reduced.addEventListener("change", onMotion);
+    const unsubscribeMotion = subscribeToMotionPreference(onMotion);
     systemTheme.addEventListener("change", onTheme);
     if (document.fonts.status !== "loaded") {
       void document.fonts.ready.then(() => {
@@ -508,7 +510,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       document.removeEventListener("visibilitychange", syncLoop);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", queueResize);
-      reduced.removeEventListener("change", onMotion);
+      unsubscribeMotion();
       systemTheme.removeEventListener("change", onTheme);
     };
   }, [mounted, variant]);

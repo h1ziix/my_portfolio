@@ -9,6 +9,7 @@ import {
 } from "react";
 import { portfolio } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { MotionToggle } from "@/components/ui/motion-toggle";
 import { Ribbon } from "@/components/ui/ribbon";
 
 export function Navigation({ innerPage = false }: { innerPage?: boolean }) {
@@ -146,6 +147,7 @@ export function Navigation({ innerPage = false }: { innerPage?: boolean }) {
             Resume <span aria-hidden="true">↓</span>
           </a>
           <ThemeToggle />
+          <MotionToggle />
           <button
             ref={menuButton}
             type="button"

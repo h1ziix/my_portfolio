@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 /** Animate the visible numerals once; assistive technology receives the exact final value. */
 export function CountUpNumber({ value }: { value: string }) {
@@ -8,7 +9,6 @@ export function CountUpNumber({ value }: { value: string }) {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     let started = false;
     const finish = () => {
@@ -16,14 +16,14 @@ export function CountUpNumber({ value }: { value: string }) {
       element.textContent = value;
     };
     const onPreference = () => {
-      if (media.matches) finish();
+      if (isMotionReduced()) finish();
     };
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || started) return;
         started = true;
         observer.disconnect();
-        if (media.matches) return;
+        if (isMotionReduced()) return;
         const start = performance.now();
         const tick = (now: number) => {
           const progress = Math.min(1, (now - start) / 640);
@@ -44,11 +44,11 @@ export function CountUpNumber({ value }: { value: string }) {
       { threshold: 0.6 },
     );
     observer.observe(element);
-    media.addEventListener("change", onPreference);
+    const unsubscribe = subscribeToMotionPreference(onPreference);
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
-      media.removeEventListener("change", onPreference);
+      unsubscribe();
     };
   }, [value]);
   return (

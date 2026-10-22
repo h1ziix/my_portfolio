@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { RibbonGradient } from "@/lib/ribbon";
+import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 type RibbonProps = {
   variant: "band" | "edge" | "underline" | "rail" | "cross";
@@ -53,7 +54,6 @@ export function Ribbon({
   useEffect(() => {
     const element = elementRef.current;
     if (!element || className.includes("hero-underline")) return;
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     let visible = false;
     const drawRail = () => {
@@ -72,7 +72,7 @@ export function Ribbon({
             Math.floor((raw + 1 / Math.max(1, rect.height)) * steps) / steps,
           )
         : raw;
-      const progress = media.matches ? 1 : stepped;
+      const progress = isMotionReduced() ? 1 : stepped;
       element.style.setProperty("--rail-progress", String(progress));
     };
     const onScroll = () => {
@@ -95,15 +95,17 @@ export function Ribbon({
     if (variant === "rail") {
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", onScroll);
-      media.addEventListener("change", drawRail);
       drawRail();
     }
+    const unsubscribe = variant === "rail"
+      ? subscribeToMotionPreference(drawRail)
+      : () => {};
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      media.removeEventListener("change", drawRail);
+      unsubscribe();
     };
   }, [variant, steps, className]);
   return (

@@ -420,6 +420,7 @@
     color: var(--action);
   }
   .theme-toggle,
+  .motion-toggle,
   .menu-toggle,
   .sheet-close {
     display: inline-flex;
@@ -437,6 +438,7 @@
       background var(--duration-fast);
   }
   .theme-toggle:hover,
+  .motion-toggle:hover,
   .menu-toggle:hover,
   .sheet-close:hover {
     border-color: var(--ink);
@@ -598,10 +600,13 @@
     background: #1a1714;
     color: #fbfaf7;
   }
-  .ribbon:hover .ribbon-marquee,
-  .ribbon:focus-within .ribbon-marquee,
   .ribbon[data-paused="true"] .ribbon-marquee {
     animation-play-state: paused;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .ribbon:hover .ribbon-marquee {
+      animation-play-state: paused;
+    }
   }
   .ribbon-pause {
     position: absolute;
@@ -2624,63 +2629,63 @@
     padding-inline: 8px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-  .reveal-in-view[data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-  .ribbon-fill {
-    clip-path: none !important;
-  }
-  .ribbon--edge .ribbon-fill {
-    transform: scaleX(1);
-  }
-  .stack-filter .ribbon-fill {
-    transform: scaleX(0);
-  }
-  .stack-filter[aria-pressed="true"] .ribbon-fill,
-  .stack-filter[data-preview="true"] .ribbon-fill {
-    transform: scaleX(1);
-  }
-  .index-row > .ribbon--edge .ribbon-fill {
-    transform: scaleY(0);
-  }
-  .index-project:hover .ribbon-fill,
-  .index-project:focus-within .ribbon-fill {
-    transform: scaleY(1);
-  }
-  .ribbon--rail .ribbon-fill {
-    transform: scaleY(1);
-  }
-  .process-connector .ribbon-fill {
-    transform: scaleX(1);
-  }
-  .ribbon-marquee {
-    transform: none;
-  }
-  .ribbon-pause {
-    display: none;
-  }
-  .action-link:hover .action-arrow,
-  .action-link:focus-visible .action-arrow,
-  a:hover > .link-arrow,
-  a:focus-visible > .link-arrow,
-  .film-start:hover .film-play,
-  .index-project:hover .index-arrow,
-  .index-project:focus-within .index-arrow,
-  .contact-index-row:hover .index-arrow {
-    transform: none;
-  }
+/* Resolved before paint: system preference is the default; a visitor may opt in. */
+:root[data-motion="reduced"],
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }
-@media (prefers-reduced-motion: reduce) and (max-width: 767px) {
-  .process-connector .ribbon-fill {
+:root[data-motion="reduced"] .reveal-in-view[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+:root[data-motion="reduced"] .ribbon-fill {
+  clip-path: none !important;
+}
+:root[data-motion="reduced"] .ribbon--edge .ribbon-fill {
+  transform: scaleX(1);
+}
+:root[data-motion="reduced"] .stack-filter .ribbon-fill {
+  transform: scaleX(0);
+}
+:root[data-motion="reduced"] .stack-filter[aria-pressed="true"] .ribbon-fill,
+:root[data-motion="reduced"] .stack-filter[data-preview="true"] .ribbon-fill {
+  transform: scaleX(1);
+}
+:root[data-motion="reduced"] .index-row > .ribbon--edge .ribbon-fill {
+  transform: scaleY(0);
+}
+:root[data-motion="reduced"] .index-project:hover .ribbon-fill,
+:root[data-motion="reduced"] .index-project:focus-within .ribbon-fill {
+  transform: scaleY(1);
+}
+:root[data-motion="reduced"] .ribbon--rail .ribbon-fill {
+  transform: scaleY(1);
+}
+:root[data-motion="reduced"] .process-connector .ribbon-fill {
+  transform: scaleX(1);
+}
+:root[data-motion="reduced"] .ribbon-marquee {
+  transform: none;
+}
+:root[data-motion="reduced"] .ribbon-pause {
+  display: none;
+}
+:root[data-motion="reduced"] .action-link:hover .action-arrow,
+:root[data-motion="reduced"] .action-link:focus-visible .action-arrow,
+:root[data-motion="reduced"] a:hover > .link-arrow,
+:root[data-motion="reduced"] a:focus-visible > .link-arrow,
+:root[data-motion="reduced"] .film-start:hover .film-play,
+:root[data-motion="reduced"] .index-project:hover .index-arrow,
+:root[data-motion="reduced"] .index-project:focus-within .index-arrow,
+:root[data-motion="reduced"] .contact-index-row:hover .index-arrow {
+  transform: none;
+}
+@media (max-width: 767px) {
+  :root[data-motion="reduced"] .process-connector .ribbon-fill {
     transform: scaleY(1);
   }
 }
