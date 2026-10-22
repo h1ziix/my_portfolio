@@ -420,7 +420,6 @@
     color: var(--action);
   }
   .theme-toggle,
-  .motion-toggle,
   .menu-toggle,
   .sheet-close {
     display: inline-flex;
@@ -438,7 +437,6 @@
       background var(--duration-fast);
   }
   .theme-toggle:hover,
-  .motion-toggle:hover,
   .menu-toggle:hover,
   .sheet-close:hover {
     border-color: var(--ink);
@@ -599,28 +597,6 @@
   .ribbon-cross-band[data-gradient="ink"] .ribbon-tape-text {
     background: #1a1714;
     color: #fbfaf7;
-  }
-  .ribbon[data-paused="true"] .ribbon-marquee {
-    animation-play-state: paused;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .ribbon:hover .ribbon-marquee {
-      animation-play-state: paused;
-    }
-  }
-  .ribbon-pause {
-    position: absolute;
-    z-index: 3;
-    right: 64px;
-    top: 10px;
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid #1a1714;
-    border-radius: 2px;
-    background: #fbfaf7;
-    color: #1a1714;
   }
   .ribbon--edge {
     position: absolute;
@@ -1663,11 +1639,6 @@
     width: 100%;
     height: 100%;
   }
-  .contact-backdrop .ribbon-pause {
-    top: 40px;
-    right: auto;
-    left: 48px;
-  }
   .contact-content {
     position: relative;
   }
@@ -2242,10 +2213,6 @@
   .ribbon--band {
     height: 56px;
   }
-  .ribbon-pause {
-    top: 6px;
-    right: 56px;
-  }
   .ribbon-tape-text {
     letter-spacing: 0.06em;
   }
@@ -2511,10 +2478,6 @@
   .contact-backdrop .ribbon-cross-band {
     height: 56px;
   }
-  .contact-backdrop .ribbon-pause {
-    top: 12px;
-    left: 12px;
-  }
   .contact-title {
     font-size: var(--fs-display);
     padding-right: 16px;
@@ -2627,65 +2590,5 @@
   .film-meta {
     font-size: 12px;
     padding-inline: 8px;
-  }
-}
-/* Resolved before paint: system preference is the default; a visitor may opt in. */
-:root[data-motion="reduced"],
-:root[data-motion="reduced"] *,
-:root[data-motion="reduced"] *::before,
-:root[data-motion="reduced"] *::after {
-  animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
-}
-:root[data-motion="reduced"] .reveal-in-view[data-reveal] {
-  opacity: 1;
-  transform: none;
-}
-:root[data-motion="reduced"] .ribbon-fill {
-  clip-path: none !important;
-}
-:root[data-motion="reduced"] .ribbon--edge .ribbon-fill {
-  transform: scaleX(1);
-}
-:root[data-motion="reduced"] .stack-filter .ribbon-fill {
-  transform: scaleX(0);
-}
-:root[data-motion="reduced"] .stack-filter[aria-pressed="true"] .ribbon-fill,
-:root[data-motion="reduced"] .stack-filter[data-preview="true"] .ribbon-fill {
-  transform: scaleX(1);
-}
-:root[data-motion="reduced"] .index-row > .ribbon--edge .ribbon-fill {
-  transform: scaleY(0);
-}
-:root[data-motion="reduced"] .index-project:hover .ribbon-fill,
-:root[data-motion="reduced"] .index-project:focus-within .ribbon-fill {
-  transform: scaleY(1);
-}
-:root[data-motion="reduced"] .ribbon--rail .ribbon-fill {
-  transform: scaleY(1);
-}
-:root[data-motion="reduced"] .process-connector .ribbon-fill {
-  transform: scaleX(1);
-}
-:root[data-motion="reduced"] .ribbon-marquee {
-  transform: none;
-}
-:root[data-motion="reduced"] .ribbon-pause {
-  display: none;
-}
-:root[data-motion="reduced"] .action-link:hover .action-arrow,
-:root[data-motion="reduced"] .action-link:focus-visible .action-arrow,
-:root[data-motion="reduced"] a:hover > .link-arrow,
-:root[data-motion="reduced"] a:focus-visible > .link-arrow,
-:root[data-motion="reduced"] .film-start:hover .film-play,
-:root[data-motion="reduced"] .index-project:hover .index-arrow,
-:root[data-motion="reduced"] .index-project:focus-within .index-arrow,
-:root[data-motion="reduced"] .contact-index-row:hover .index-arrow {
-  transform: none;
-}
-@media (max-width: 767px) {
-  :root[data-motion="reduced"] .process-connector .ribbon-fill {
-    transform: scaleY(1);
   }
 }

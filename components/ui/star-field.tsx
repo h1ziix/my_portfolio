@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 type Star = {
   x: number;
@@ -103,7 +102,6 @@ export function StarField({ variant }: { variant?: "dark" }) {
     if (!context) return;
     const local = variant === "dark";
     const section = local ? canvas.parentElement : null;
-    let reduced = isMotionReduced();
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     const stars: Star[] = [];
     const crystals: Star[] = [];
@@ -228,18 +226,10 @@ export function StarField({ variant }: { variant?: "dark" }) {
       }
     }
 
-    function drawMasks(still: boolean) {
+    function drawMasks() {
       context!.save();
       context!.globalCompositeOperation = "destination-out";
       context!.fillStyle = "#000";
-      // A fixed static frame cannot follow document text while scrolling. Keep its
-      // whole field below the existing contrast floor without repainting on scroll.
-      if (still && !local) {
-        context!.globalAlpha = dark ? 0.85 : 0.7;
-        context!.fillRect(0, 0, width, height);
-        context!.restore();
-        return;
-      }
       const offsetY = local ? canvasTop : scroll;
       for (let i = 0; i < masks.length; i++) {
         const mask = masks[i];
@@ -256,12 +246,12 @@ export function StarField({ variant }: { variant?: "dark" }) {
       context!.restore();
     }
 
-    function paint(delta: number, still = reduced) {
+    function paint(delta: number) {
       if (!width || !height) return;
       context!.setTransform(dpr, 0, 0, dpr, 0, 0);
       context!.clearRect(0, 0, width, height);
-      const time = still ? 0 : elapsed;
-      if (!still && elapsed >= nextFlare) {
+      const time = elapsed;
+      if (elapsed >= nextFlare) {
         flare = crystals[Math.floor(Math.random() * crystals.length)] ?? null;
         flareStart = elapsed;
         nextFlare = elapsed + random(mobile ? 7 : 4, mobile ? 10 : 7);
@@ -269,22 +259,18 @@ export function StarField({ variant }: { variant?: "dark" }) {
       if (flare && elapsed - flareStart > 0.9) flare = null;
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
-        if (!still) {
-          star.x = wrap(star.x + (star.vx * delta) / width, 1);
-          star.y = wrap(star.y + (star.vy * delta) / height, 1);
-        }
+        star.x = wrap(star.x + (star.vx * delta) / width, 1);
+        star.y = wrap(star.y + (star.vy * delta) / height, 1);
         const x = star.x * width;
         const y = wrap(
-          star.y * height - (still ? 0 : scroll * PARALLAX[star.depth]),
+          star.y * height - scroll * PARALLAX[star.depth],
           height,
         );
         const burn =
-          !still && star === flare
+          star === flare
             ? Math.sin((Math.PI * (elapsed - flareStart)) / 0.9) ** 2
             : 0;
-        const twinkle = still
-          ? 0.55
-          : 0.55 + 0.45 * Math.sin(time * star.speed + star.phase);
+        const twinkle = 0.55 + 0.45 * Math.sin(time * star.speed + star.phase);
         context!.globalAlpha =
           (star.opacity * twinkle + (1 - star.opacity * twinkle) * burn) *
           opacity;
@@ -312,16 +298,14 @@ export function StarField({ variant }: { variant?: "dark" }) {
         }
         const color = colorIndex === 0 ? core : colorIndex === 1 ? tint : warm;
         context!.fillStyle = color;
-        const scale = still
-          ? 1
-          : 0.975 + 0.125 * Math.sin(time * star.speed + star.phase);
+        const scale = 0.975 + 0.125 * Math.sin(time * star.speed + star.phase);
         const ray = (dark ? star.radius : 1) * scale * (1 + 0.6 * burn);
         if (dark && glow)
           context!.drawImage(glow, x - ray * 3, y - ray * 3, ray * 6, ray * 6);
         context!.save();
         context!.translate(x, y);
         context!.rotate(
-          still ? 0 : (Math.sin(time * 0.12 + star.phase) * Math.PI) / 22.5,
+          (Math.sin(time * 0.12 + star.phase) * Math.PI) / 22.5,
         );
         context!.strokeStyle = color;
         context!.lineWidth = dark ? 0.65 : 1;
@@ -341,7 +325,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
         context!.fill();
         context!.restore();
       }
-      if (!still && !local && dark && !mobile) {
+      if (!local && dark && !mobile) {
         if (elapsed >= nextMeteor) {
           meteor = {
             x: random(0.08, 0.65) * width,
@@ -376,7 +360,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
           }
         }
       }
-      drawMasks(still);
+      drawMasks();
       context!.globalAlpha = 1;
     }
 
@@ -384,7 +368,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       const covered =
         !local && scroll >= coveredTop && scroll + height <= coveredBottom;
       return (
-        !disposed && !document.hidden && inView && !reduced && !covered
+        !disposed && !document.hidden && inView && !covered
       );
     }
     function tick(timestamp: number) {
@@ -462,14 +446,6 @@ export function StarField({ variant }: { variant?: "dark" }) {
       nextMeteor = elapsed + random(14, 22);
       paint(0);
     }
-    function onMotion() {
-      reduced = isMotionReduced();
-      flare = meteor = null;
-      nextFlare = elapsed + random(mobile ? 7 : 4, mobile ? 10 : 7);
-      nextMeteor = elapsed + random(14, 22);
-      paint(0);
-      syncLoop();
-    }
 
     readPalette();
     resize();
@@ -490,7 +466,6 @@ export function StarField({ variant }: { variant?: "dark" }) {
     document.addEventListener("visibilitychange", syncLoop);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", queueResize, { passive: true });
-    const unsubscribeMotion = subscribeToMotionPreference(onMotion);
     systemTheme.addEventListener("change", onTheme);
     if (document.fonts.status !== "loaded") {
       void document.fonts.ready.then(() => {
@@ -510,7 +485,6 @@ export function StarField({ variant }: { variant?: "dark" }) {
       document.removeEventListener("visibilitychange", syncLoop);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", queueResize);
-      unsubscribeMotion();
       systemTheme.removeEventListener("change", onTheme);
     };
   }, [mounted, variant]);

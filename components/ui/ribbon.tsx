@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import type { RibbonGradient } from "@/lib/ribbon";
-import { isMotionReduced, subscribeToMotionPreference } from "@/lib/motion-preference";
 
 type RibbonProps = {
   variant: "band" | "edge" | "underline" | "rail" | "cross";
@@ -47,10 +46,7 @@ export function Ribbon({
   accessibleText,
 }: RibbonProps) {
   const elementRef = useRef<HTMLDivElement | HTMLSpanElement | null>(null);
-  const [paused, setPaused] = useState(false);
   const Root = variant === "underline" ? "span" : "div";
-  const moving =
-    variant === "band" || (variant === "cross" && Boolean(children));
   useEffect(() => {
     const element = elementRef.current;
     if (!element || className.includes("hero-underline")) return;
@@ -72,8 +68,7 @@ export function Ribbon({
             Math.floor((raw + 1 / Math.max(1, rect.height)) * steps) / steps,
           )
         : raw;
-      const progress = isMotionReduced() ? 1 : stepped;
-      element.style.setProperty("--rail-progress", String(progress));
+      element.style.setProperty("--rail-progress", String(stepped));
     };
     const onScroll = () => {
       if (visible && !frame) frame = requestAnimationFrame(drawRail);
@@ -87,7 +82,12 @@ export function Ribbon({
           if (variant === "rail") onScroll();
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+      {
+        rootMargin: variant === "band" || variant === "cross"
+          ? "0px"
+          : "0px 0px -8% 0px",
+        threshold: variant === "band" || variant === "cross" ? 0 : 0.05,
+      },
     );
     observer.observe(
       variant === "rail" ? (element.parentElement ?? element) : element,
@@ -97,15 +97,11 @@ export function Ribbon({
       window.addEventListener("resize", onScroll);
       drawRail();
     }
-    const unsubscribe = variant === "rail"
-      ? subscribeToMotionPreference(drawRail)
-      : () => {};
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      unsubscribe();
     };
   }, [variant, steps, className]);
   return (
@@ -115,7 +111,6 @@ export function Ribbon({
       }}
       className={`ribbon ${variantClasses[variant]} ${className}`}
       data-gradient={gradient}
-      data-paused={paused}
     >
       {accessibleText ? (
         <span className="sr-only">{accessibleText}</span>
@@ -134,29 +129,6 @@ export function Ribbon({
       ) : (
         <span aria-hidden="true" className="ribbon-fill" />
       )}
-      {moving ? (
-        <button
-          type="button"
-          className="ribbon-pause focus-ring"
-          aria-label={paused ? "Play tape animation" : "Pause tape animation"}
-          aria-pressed={paused}
-          onClick={() => setPaused(!paused)}
-        >
-          <svg
-            aria-hidden="true"
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-          >
-            {paused ? (
-              <path d="m5 3 8 5-8 5z" />
-            ) : (
-              <path d="M4 3h3v10H4zm5 0h3v10H9z" />
-            )}
-          </svg>
-        </button>
-      ) : null}
     </Root>
   );
 }

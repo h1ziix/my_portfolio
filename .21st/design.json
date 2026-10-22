@@ -184,7 +184,7 @@
       "implementation": "CSS and IntersectionObserver; native scrolling; rAF-throttled rail fills; one-time numeral count-up",
       "durations": "160 / 320 / 640ms; hero underline 400ms; group stagger 60ms",
       "reveal": "Opacity and translateY(12px), 320ms, once",
-      "reducedMotion": "Static marquee, final counts and rails, visible content; interactive filter dimming remains intact"
+      "playback": "Always enabled per the latest user request; no pause controls, hover pauses or reduced-motion override. Suspend only hidden/offscreen work."
     },
     "density": "Launch tape: asymmetric 7/5 hero with reel, sticky editorial chapters, supporting index table, dark bento, timeline, horizontal process, crossed-tape finale"
   },
@@ -222,7 +222,7 @@
       "KazEcoFood ember; Agentic Ops ink; ATU Campus sand; StratWeb pitch; supporting projects ember at 60% opacity.",
       "Preserve system/light/dark storage and system-preference behavior.",
       "Visible SSR baseline; video preload none, user-initiated playback, native controls, single active video, downloads, captions and transcripts.",
-      "CSS + IntersectionObserver only. Reduced motion shows final states. Inspect desktop and mobile in the browser."
+      "CSS + IntersectionObserver only. Motion is always enabled per the latest user request, without pause controls. Inspect desktop and mobile in the browser."
     ],
     "avoid": [
       "Gradient section fills, glows, blur, decorative shadows, large-radius cards",
@@ -247,7 +247,8 @@
     "2026-10-22: user-selected full Launch tape redesign supersedes earlier color-only and no-mono/no-numbering constraints. New composition, fluid typography, project ribbon identities, mobile navigation and restrained CSS/IntersectionObserver motion. Existing product content, media, links and theme logic are preserved. 21st inspiration search returned HTTP 401; reused project primitives and implemented the explicit user direction. Browser checks cover 320–1440px, both themes, reduced motion, six players, navigation and case studies.",
     "2026-10-22: user supplied sections 3–4 of Launch tape. Apply the exact reel/chapter/index/bento/timeline/process/finale composition, replacing the earlier film list and skill rows. Preserve all factual data and project media. Native dialogs provide focus containment and Escape; native scrolling and CSS/IntersectionObserver handle motion. Project videos pause on unmount. Count-up text is decorative with stable final accessible labels. Copy feedback lasts 1.5 seconds.",
     "2026-10-22: final responsive and accessibility requirements take precedence over 35% text opacity: preserve AA-readable filtered text and apply 35% only to decorative borders. Focus rings use 2px accent outlines with 2px offset; all authored controls are at least 44px. Expose each marquee message once. Retain the 8% footer wordmark as decorative SVG artwork. Supporting video posters are extracted from the original films; factual data and original media stay unchanged.",
-    "2026-10-22: user requested subtle canvas star-field atmosphere without other design changes. Add hydration-gated StarField at the root and a clipped dark instance in skills. Area-based density, DPR <=2, 30fps, stable theme-switched positions, crystal flares and desktop dark-only shooting stars. Cache gradients and document masks outside the animation loop; pause hidden/offscreen canvases. Reduced motion draws a static field, with a conservative uniform mask on the fixed canvas to retain contrast while native scrolling needs no repaint. User-requested dark crystal glow is an explicit exception to ribbon-only gradients."
+    "2026-10-22: user requested subtle canvas star-field atmosphere without other design changes. Add hydration-gated StarField at the root and a clipped dark instance in skills. Area-based density, DPR <=2, 30fps, stable theme-switched positions, crystal flares and desktop dark-only shooting stars. Cache gradients and document masks outside the animation loop; pause hidden/offscreen canvases. Reduced motion draws a static field, with a conservative uniform mask on the fixed canvas to retain contrast while native scrolling needs no repaint. User-requested dark crystal glow is an explicit exception to ribbon-only gradients.",
+    "2026-10-22: latest user instruction supersedes reduced-motion and hover-pause behavior. Visible ribbons and stars always animate, with no global or ribbon pause controls. Remove motion preference storage and ignore previously saved choices. Preserve the theme toggle, native video controls and hidden/offscreen resource savings."
   ],
   "evidence": [
     {
