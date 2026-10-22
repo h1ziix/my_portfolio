@@ -1,25 +1,37 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { Golos_Text, Sofia_Sans_Condensed, JetBrains_Mono } from "next/font/google";
+import { siteUrl } from "@/lib/site";
+import { StarField } from "@/components/ui/star-field";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+// Both families ship Cyrillic with Kazakh letters, so a Russian version needs no font change.
+const golosText = Golos_Text({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-text",
   display: "swap"
 });
 
-const plexMono = IBM_Plex_Mono({
+const sofiaSansCondensed = Sofia_Sans_Condensed({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex-mono",
+  weight: ["700"],
+  variable: "--font-display",
   display: "swap"
 });
 
-const siteUrl = new URL("https://my-portfolio-five-swart-53.vercel.app/");
-const socialImageUrl = new URL("/technical-system-texture.png", siteUrl).href;
-const siteTitle = "Toksoz Sultan - AI Product Developer";
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap"
+});
+
+const socialImageUrl = new URL("/opengraph-image", siteUrl).href;
+const siteTitle = "Toksoz Sultan — Full-stack developer | TypeScript, Python & AI";
 const siteDescription =
-  "Toksoz Sultan — AI Product Developer building full-stack AI products, agentic workflows and business automation with human approvals and controlled actions.";
+  "Full-stack developer in Almaty working with TypeScript, JavaScript, Python and PostgreSQL. Explore Agentic Ops, ATU Campus and business automation through product videos and engineering case studies.";
+
+// Resolve the saved or system preference before the page paints.
+const themeBootstrap = `(function(){var p='system';try{var s=localStorage.getItem('toksoz-theme');if(s==='light'||s==='dark')p=s;}catch(e){}var t=p==='system'?(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;var r=document.documentElement;r.dataset.theme=t;r.dataset.themePreference=p;r.style.colorScheme=t;})();`;
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -35,14 +47,14 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     url: siteUrl.href,
-    siteName: "Toksoz Sultan Portfolio",
+    siteName: "Toksoz Sultan",
     type: "website",
     images: [
       {
         url: socialImageUrl,
-        width: 1792,
-        height: 1024,
-        alt: "Abstract technical system texture"
+        width: 1200,
+        height: 630,
+        alt: "Toksoz Sultan — Products, agents and automation. TypeScript, JavaScript, Python and PostgreSQL."
       }
     ]
   },
@@ -63,8 +75,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${plexMono.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={`${golosText.variable} ${sofiaSansCondensed.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head><script id="theme-bootstrap" dangerouslySetInnerHTML={{ __html: themeBootstrap }} /></head>
+      <body className="font-sans antialiased"><StarField />{children}</body>
     </html>
   );
 }

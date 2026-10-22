@@ -1,17 +1,50 @@
-import { ArrowUp } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 
 export function Footer() {
   return (
-    <footer className="content-shell">
-      <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border py-5 text-xs leading-6 text-text-muted">
-        <p className="font-mono">{portfolio.person.name}</p>
-        <a
-          href="#top"
-          className="focus-ring inline-flex min-h-11 items-center gap-2 font-mono transition-colors hover:text-accent-text"
+    <footer className="shell site-footer">
+      <svg
+        className="footer-wordmark display"
+        viewBox="0 0 1280 228"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <text
+          x="0"
+          y="180"
+          textLength="1280"
+          lengthAdjust="spacingAndGlyphs"
+          fill="currentColor"
         >
-          Back to top
-          <ArrowUp aria-hidden="true" className="h-3.5 w-3.5" />
+          {portfolio.person.displayName}
+        </text>
+      </svg>
+      <div className="footer-bottom meta">
+        <p>
+          © {new Date().getFullYear()} {portfolio.person.name}
+        </p>
+        <div className="footer-links">
+          {portfolio.socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                social.href.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              className="text-link focus-ring"
+            >
+              {social.label}
+              {social.href.startsWith("http") ? (
+                <span aria-hidden="true">↗</span>
+              ) : null}
+            </a>
+          ))}
+        </div>
+        <a href="#top" className="text-link focus-ring">
+          Back to top <span aria-hidden="true">↑</span>
         </a>
       </div>
     </footer>

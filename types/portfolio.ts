@@ -1,13 +1,16 @@
 export type ProjectHierarchy = "featured" | "major" | "supporting";
 
-export type ProjectStatus = {
+/** What a reviewer can check today. The tone drives the chip colour. */
+export type ProjectState = {
+  tone: "live" | "building" | "closed";
   label: string;
-  description?: string;
+  note?: string;
 };
 
 export type ProjectLinks = {
   caseStudy?: string;
   demo?: string;
+  site?: string;
   source?: string;
   access?: string;
 };
@@ -19,6 +22,10 @@ export type ProjectMedia = {
   width?: number;
   height?: number;
   caption?: string;
+  poster?: string;
+  duration?: string;
+  captions?: string;
+  transcript?: string;
 };
 
 export type ProjectOutcome = {
@@ -40,8 +47,7 @@ export type Project = {
   hierarchy: ProjectHierarchy;
   role: string;
   technologies: string[];
-  releaseStatus: ProjectStatus;
-  accessStatus: ProjectStatus;
+  state: ProjectState;
   links: ProjectLinks;
   media: ProjectMedia[];
   features: string[];
@@ -67,10 +73,12 @@ export type PortfolioPerson = {
   positioning: string;
   experience: string;
   location: string;
+  workFormat: string;
   availability: string;
   profile: string;
   summary: string;
   resumeHref: string;
+  resumeNote: string;
 };
 
 export type PortfolioExperience = {
@@ -84,10 +92,9 @@ export type PortfolioExperience = {
 export type Portfolio = {
   person: PortfolioPerson;
   navigation: { label: string; href: string }[];
-  heroMeta: string[];
   projects: Project[];
   experience: PortfolioExperience[];
-  skills: { area: string; items: string[] }[];
+  skills: { area: string; items: string[]; description?: string; projects?: string[] }[];
   assistants: string[];
   process: { title: string; description: string }[];
   socials: { label: string; href: string; value: string }[];

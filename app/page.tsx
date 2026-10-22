@@ -14,8 +14,8 @@ export default function Home() {
       <main id="main-content" tabIndex={-1} className="focus-ring">
         <Hero />
         <Projects />
-        <Experience />
         <TechnicalSkills />
+        <Experience />
         <HowIWork />
         <Contact />
       </main>

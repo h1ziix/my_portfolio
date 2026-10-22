@@ -2,206 +2,233 @@
   "version": 1,
   "project": {
     "name": "sultan-portfolio",
-    "productType": "Editorial AI developer portfolio",
-    "stack": [
-      "nextjs",
-      "react",
-      "tailwind-v3"
-    ]
+    "productType": "Developer portfolio with product films and engineering case studies",
+    "stack": ["nextjs", "react", "tailwind-v3"]
   },
   "sources": {
-    "tokens": [
-      "app/globals.css"
-    ],
-    "components": [
-      "components/ui"
-    ],
-    "assets": [
-      "public/brand"
-    ],
+    "tokens": ["app/globals.css"],
+    "components": ["components/ui"],
+    "assets": ["public/brand"],
     "instructions": []
   },
   "design": {
-    "colorMode": "light",
+    "colorMode": "system with persisted light and dark overrides",
     "colors": {
-      "--text-primary": {
-        "value": "#24252a",
+      "--bg": {
+        "value": "#f2efe8",
         "source": "app/globals.css"
       },
-      "--text-secondary": {
-        "value": "#54565f",
+      "--surface": {
+        "value": "#fbfaf7",
         "source": "app/globals.css"
       },
-      "--text-muted": {
-        "value": "#686a73",
+      "--ink": {
+        "value": "#1a1714",
         "source": "app/globals.css"
       },
-      "--border": {
-        "value": "#ddded7",
+      "--muted": {
+        "value": "#6b655c",
         "source": "app/globals.css"
       },
-      "--border-strong": {
-        "value": "#b3b5af",
+      "--line": {
+        "value": "#d9d3c7",
         "source": "app/globals.css"
       },
       "--accent": {
-        "value": "#5b4acb",
+        "value": "#c2410c",
         "source": "app/globals.css"
       },
       "--accent-hover": {
-        "value": "#4939af",
+        "value": "#a8360b",
         "source": "app/globals.css"
       },
-      "--accent-subtle": {
-        "value": "#ece9fb",
+      "--accent-ink": {
+        "value": "#a8360b",
         "source": "app/globals.css"
       },
-      "--accent-text": {
-        "value": "#5140b7",
+      "--accent-wash": {
+        "value": "#f6e3d8",
+        "source": "app/globals.css"
+      },
+      "--dark-bg": {
+        "value": "#16140f",
+        "source": "app/globals.css"
+      },
+      "--dark-surface": {
+        "value": "#201d17",
+        "source": "app/globals.css"
+      },
+      "--dark-line": {
+        "value": "#34302a",
+        "source": "app/globals.css"
+      },
+      "--dark-ink": {
+        "value": "#ede8de",
+        "source": "app/globals.css"
+      },
+      "--dark-muted": {
+        "value": "#a39c90",
+        "source": "app/globals.css"
+      },
+      "--dark-accent": {
+        "value": "#ff6a3d",
         "source": "app/globals.css"
       },
       "--on-accent": {
         "value": "#ffffff",
         "source": "app/globals.css"
       },
-      "--canvas": {
-        "value": "#f7f7f2",
+      "--paper": {
+        "value": "var(--bg)",
         "source": "app/globals.css"
       },
-      "--surface": {
-        "value": "#ffffff",
+      "--slate": {
+        "value": "var(--muted)",
         "source": "app/globals.css"
       },
-      "--surface-subtle": {
-        "value": "#efefe9",
+      "--rule": {
+        "value": "var(--line)",
         "source": "app/globals.css"
       },
-      "--success": {
-        "value": "#286548",
+      "--rule-strong": {
+        "value": "var(--line)",
         "source": "app/globals.css"
       },
-      "--warning": {
-        "value": "#80551c",
+      "--control-rule": {
+        "value": "var(--ink)",
+        "source": "app/globals.css"
+      },
+      "--primary": {
+        "value": "var(--ink)",
+        "source": "app/globals.css"
+      },
+      "--primary-hover": {
+        "value": "var(--accent)",
+        "source": "app/globals.css"
+      },
+      "--primary-soft": {
+        "value": "var(--surface)",
+        "source": "app/globals.css"
+      },
+      "--action": {
+        "value": "var(--accent-ink)",
+        "source": "app/globals.css"
+      },
+      "--action-hover": {
+        "value": "var(--accent-hover)",
+        "source": "app/globals.css"
+      },
+      "--on-action": {
+        "value": "var(--bg)",
+        "source": "app/globals.css"
+      },
+      "--held": {
+        "value": "var(--surface)",
+        "source": "app/globals.css"
+      },
+      "--held-ink": {
+        "value": "var(--ink)",
+        "source": "app/globals.css"
+      },
+      "--held-rule": {
+        "value": "var(--line)",
+        "source": "app/globals.css"
+      },
+      "--held-strong": {
+        "value": "var(--accent)",
+        "source": "app/globals.css"
+      },
+      "--done": {
+        "value": "var(--surface)",
+        "source": "app/globals.css"
+      },
+      "--done-ink": {
+        "value": "var(--ink)",
+        "source": "app/globals.css"
+      },
+      "--done-rule": {
+        "value": "var(--line)",
+        "source": "app/globals.css"
+      },
+      "--idle": {
+        "value": "var(--surface)",
         "source": "app/globals.css"
       }
     },
     "typography": {
-      "--container-text": {
-        "value": "70ch",
-        "source": "app/globals.css"
-      },
-      "--type-display": {
-        "value": "clamp(2.5rem, 5.2vw, 4.5rem)",
-        "source": "app/globals.css"
-      },
-      "--type-section": {
-        "value": "clamp(2rem, 3vw, 2.5rem)",
-        "source": "app/globals.css"
-      },
-      "--type-card": {
-        "value": "clamp(1.5rem, 2.4vw, 2rem)",
-        "source": "app/globals.css"
-      }
+      "display": "Sofia Sans Condensed 700; clamp(64px, 11vw, 168px), .88 line height, -.02em tracking",
+      "headings": "clamp(44px, 6vw, 96px) / clamp(28px, 3vw, 44px)",
+      "body": "Golos Text; clamp(16px, 1.1vw, 18px), 1.6 line height",
+      "meta": "JetBrains Mono 400/500 via next/font; 12px uppercase with .12em tracking"
     },
     "spacing": {
-      "--space-1": {
-        "value": "4px",
-        "source": "app/globals.css"
-      },
-      "--space-2": {
-        "value": "8px",
-        "source": "app/globals.css"
-      },
-      "--space-3": {
-        "value": "12px",
-        "source": "app/globals.css"
-      },
-      "--space-4": {
-        "value": "16px",
-        "source": "app/globals.css"
-      },
-      "--space-6": {
-        "value": "24px",
-        "source": "app/globals.css"
-      },
-      "--space-8": {
-        "value": "32px",
-        "source": "app/globals.css"
-      },
-      "--space-12": {
-        "value": "48px",
-        "source": "app/globals.css"
-      },
-      "--space-16": {
-        "value": "64px",
-        "source": "app/globals.css"
-      },
-      "--space-22": {
-        "value": "88px",
-        "source": "app/globals.css"
-      },
-      "--section-space": {
-        "value": "var(--space-22)",
-        "source": "app/globals.css"
-      },
-      "--gutter": {
-        "value": "var(--space-12)",
-        "source": "app/globals.css"
-      },
-      "--container-wide": {
-        "value": "1280px",
-        "source": "app/globals.css"
-      },
-      "--container-content": {
-        "value": "1088px",
-        "source": "app/globals.css"
-      }
+      "gutter": "24px / 16px mobile",
+      "shell": "1280px",
+      "section": "clamp(96px, 12vw, 180px)",
+      "grid": "12 columns"
     },
     "radius": {
       "--radius-control": {
-        "value": "6px",
+        "value": "2px",
         "source": "app/globals.css"
       },
       "--radius-surface": {
-        "value": "10px",
+        "value": "4px",
         "source": "app/globals.css"
       }
     },
     "shadows": {
-      "--shadow-media": {
-        "value": "0 8px 24px rgb(36 37 42 / 0.05)",
-        "source": "app/globals.css"
-      }
+      "all": "none"
     },
-    "motion": {},
-    "density": "compact editorial"
+    "motion": {
+      "implementation": "CSS and IntersectionObserver; native scrolling; rAF-throttled rail fills; one-time numeral count-up",
+      "durations": "160 / 320 / 640ms; hero underline 400ms; group stagger 60ms",
+      "reveal": "Opacity and translateY(12px), 320ms, once",
+      "reducedMotion": "Static marquee, final counts and rails, visible content; interactive filter dimming remains intact"
+    },
+    "density": "Launch tape: asymmetric 7/5 hero with reel, sticky editorial chapters, supporting index table, dark bento, timeline, horizontal process, crossed-tape finale"
   },
   "components": {
     "installed": [
       "action-link",
-      "reveal",
-      "section-label"
+      "section-label",
+      "theme-toggle",
+      "technology-icon",
+      "ribbon",
+      "reveal-in-view",
+      "count-up-number",
+      "copy-email",
+      "film-reel",
+      "star-field"
     ],
     "preferredPrimitives": [],
     "patterns": [
-      "Featured overview with real sample media",
-      "Major overview with sourced operational scope",
-      "Compact supporting project rows",
-      "Grouped engineering skills with secondary AI assistants"
+      "Transparent header switches to paper after 24px; one shared sliding ribbon indicator follows section IntersectionObserver state; native full-screen mobile navigation dialog",
+      "Hero: 7/5 composition with accent headline and 400ms tape underline; rotated three-card reel opens a native film dialog; mobile reel is a scroll-snap carousel; exact production metrics count up once; core-stack marquee ends the hero",
+      "Four sticky project chapters: KazEcoFood, Agentic Ops, ATU Campus, StratWeb; outlined chapter numbers, dark film frames, evidence and key points; before/after DOCX output metrics",
+      "Supporting work is an index table with original descriptions, features, source/access links and videos retained in disclosures",
+      "Dark five-category bento with project filters; categories use the existing project mapping and exact technology intersections; unrelated text uses AA-safe dark-muted while decorative borders dim to 35%",
+      "Experience timeline fills an ember rail; four desktop process steps share a stepped horizontal ribbon connector and become a vertical rail on mobile",
+      "Contact keeps Get in touch and existing copy; crossed marquee tape sits behind the finale; giant email link with 1.5-second copy confirmation; social index includes literal configurable Upwork/LinkedIn placeholders",
+      "Footer: decorative 8% opacity full-name wordmark, current year, original contact links and Back to top"
     ]
   },
   "constraints": {
     "must": [
-      "Off-white canvas, graphite typography, restrained violet accent",
-      "Preserve Space Grotesk and IBM Plex Mono",
-      "Selected Work immediately after Hero",
-      "Featured / major / supporting project hierarchy",
-      "Visible SSR baseline and reduced motion support"
+      "Preserve all existing copy, facts, metrics, links, videos, captions, transcripts and resume. Never invent claims.",
+      "Keep --bg/--ink/--accent and existing warm paper/ink tokens; flat surfaces, hairlines, radius 0–6px.",
+      "Sofia Sans Condensed display, Golos Text body, JetBrains Mono metadata via next/font.",
+      "Gradients only on tape; at most one dominant tape motif per viewport. No purple, indigo or blue-violet portfolio chrome.",
+      "KazEcoFood ember; Agentic Ops ink; ATU Campus sand; StratWeb pitch; supporting projects ember at 60% opacity.",
+      "Preserve system/light/dark storage and system-preference behavior.",
+      "Visible SSR baseline; video preload none, user-initiated playback, native controls, single active video, downloads, captions and transcripts.",
+      "CSS + IntersectionObserver only. Reduced motion shows final states. Inspect desktop and mobile in the browser."
     ],
     "avoid": [
-      "Dark full-page gradients, glow, glassmorphism and looping simulations",
-      "Invented metrics, dates, technologies and links",
-      "Full Agentic Ops flagship or case-study implementation before Stage 04"
+      "Gradient section fills, glows, blur, decorative shadows, large-radius cards",
+      "Changing factual project data or links",
+      "Adding an animation runtime for this redesign",
+      "Hidden or clipped mobile content"
     ]
   },
   "decisions": [
@@ -209,7 +236,18 @@
     "Reuse ActionLink, SectionLabel and hydration-safe Reveal; use compact Project Index row composition as inspiration for supporting work.",
     "Agentic Ops is a basic featured overview with an actual sample screenshot, KazEcoFood a major overview, and remaining work compact rows.",
     "Stage 03: server-rendered AI Product Developer Hero; asymmetric desktop composition, stacked tablet, real approval-inbox evidence with explicit sample status and mobile art direction.",
-    "Hero uses existing Framer Motion only for a short post-hydration transform entrance; no hidden SSR copy, looping backgrounds or pointer parallax. Preview links to the existing Agentic Ops overview."
+    "Hero uses existing Framer Motion only for a short post-hydration transform entrance; no hidden SSR copy, looping backgrounds or pointer parallax. Preview links to the existing Agentic Ops overview.",
+    "Stage 04 (2026-10-08): the review-queue direction replaces the Stage 02 violet editorial system. The palette comes from the Agentic Ops product tokens; the hero is a sentence headline plus a playable approval card in place of the screenshot.",
+    "Framer Motion, lucide-react, Reveal, ScrollProgress and HeroEntrance are removed. Section eyebrows and project numbering are gone; numbers stay only on the How I work steps.",
+    "2026-10-21: product films for Agentic Ops (1:30) and ATU Campus (1:54) replace the simulated approval hero. Both get native video players, verified Russian captions, transcripts and static case studies.",
+    "Core stack is TypeScript, JavaScript, Python and PostgreSQL. Skill groups link to the local projects that demonstrate their use. ATU is a demo project and its AI grading sequence is explicitly a future feature concept.",
+    "2026-10-22: Agentic Ops, ATU Campus and StratWeb share a compact three-film index in the hero and framed native players in featured editorial rows. Film frames use existing light surfaces, a blue circular play action, duration and available captions. Feature lists expand on demand to keep the films in focus. StratWeb has a static case study and a 1080p60 faststart showreel with music, no narration.",
+    "2026-10-22: user-selected section rhythm adds a feathered dark skills band and primary-soft process band. Hero gains an availability pill, exact production proof and six monochrome framework marks; films share dark frames. Secondary video resources collapse into disclosures. Contact gains a subtle gradient border and disabled Upwork/LinkedIn placeholders until configured. System/light/dark preferences persist under toksoz-theme; Golos Text and Sofia Sans Condensed remain unchanged. Project data and all original project facts, copy and numbers are preserved.",
+    "2026-10-22: color-only editorial rework replaces the previous palette with warm paper, warm black and restrained vermilion. All layout, copy, fonts and content stay intact. Remove decorative effects and shadows; use hairlines, square status markers and neutral process surfaces. Keep original project media and static OG artwork unchanged; recolor code-native OG output and favicon tokens.",
+    "2026-10-22: user-selected full Launch tape redesign supersedes earlier color-only and no-mono/no-numbering constraints. New composition, fluid typography, project ribbon identities, mobile navigation and restrained CSS/IntersectionObserver motion. Existing product content, media, links and theme logic are preserved. 21st inspiration search returned HTTP 401; reused project primitives and implemented the explicit user direction. Browser checks cover 320–1440px, both themes, reduced motion, six players, navigation and case studies.",
+    "2026-10-22: user supplied sections 3–4 of Launch tape. Apply the exact reel/chapter/index/bento/timeline/process/finale composition, replacing the earlier film list and skill rows. Preserve all factual data and project media. Native dialogs provide focus containment and Escape; native scrolling and CSS/IntersectionObserver handle motion. Project videos pause on unmount. Count-up text is decorative with stable final accessible labels. Copy feedback lasts 1.5 seconds.",
+    "2026-10-22: final responsive and accessibility requirements take precedence over 35% text opacity: preserve AA-readable filtered text and apply 35% only to decorative borders. Focus rings use 2px accent outlines with 2px offset; all authored controls are at least 44px. Expose each marquee message once. Retain the 8% footer wordmark as decorative SVG artwork. Supporting video posters are extracted from the original films; factual data and original media stay unchanged.",
+    "2026-10-22: user requested subtle canvas star-field atmosphere without other design changes. Add hydration-gated StarField at the root and a clipped dark instance in skills. Area-based density, DPR <=2, 30fps, stable theme-switched positions, crystal flares and desktop dark-only shooting stars. Cache gradients and document masks outside the animation loop; pause hidden/offscreen canvases. Reduced motion draws a static field, with a conservative uniform mask on the fixed canvas to retain contrast while native scrolling needs no repaint. User-requested dark crystal glow is an explicit exception to ribbon-only gradients."
   ],
   "evidence": [
     {
@@ -237,5 +275,5 @@
       "source": "package.json"
     }
   ],
-  "generatedAt": "2026-10-04T15:24:18.93Z"
+  "generatedAt": "2026-10-08T17:13:12.430Z"
 }

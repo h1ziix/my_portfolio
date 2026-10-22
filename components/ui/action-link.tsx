@@ -1,10 +1,25 @@
-import { ArrowUpRight, Download } from "lucide-react";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+
+type ActionVariant = "primary" | "secondary";
 
 type ActionLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: ActionVariant;
 };
+
+const base =
+  "action-link focus-ring inline-flex min-h-12 min-w-0 max-w-full items-center justify-center rounded-control border px-5 text-base font-medium transition-colors duration-150 active:translate-y-px aria-disabled:cursor-progress aria-disabled:opacity-70";
+const variants: Record<ActionVariant, string> = {
+  primary:
+    "action-primary border-primary bg-primary text-on-action hover:border-primary-hover hover:bg-primary-hover",
+  secondary:
+    "action-secondary border-ink bg-transparent text-ink hover:bg-ink hover:text-bg",
+};
+
+/** Shared by links and buttons, so one action looks the same wherever it appears. */
+export function actionClasses(variant: ActionVariant = "secondary") {
+  return `${base} ${variants[variant]}`;
+}
 
 export function ActionLink({
   children,
@@ -12,27 +27,12 @@ export function ActionLink({
   className = "",
   ...props
 }: ActionLinkProps) {
-  const Icon = props.download ? Download : ArrowUpRight;
-  const base =
-    "focus-ring group inline-flex min-h-12 min-w-0 max-w-full items-center justify-center gap-3 rounded-control border px-4 text-sm font-medium transition-colors duration-150 active:translate-y-px sm:px-5";
-  const variants = {
-    primary:
-      "border-accent bg-accent text-on-accent hover:border-accent-hover hover:bg-accent-hover",
-    secondary:
-      "border-border-strong bg-surface text-text-primary hover:border-accent hover:bg-accent-subtle"
-  };
-
   return (
-    <a className={`${base} ${variants[variant]} ${className}`} {...props}>
-      <span className="min-w-0 break-words">{children}</span>
-      <Icon
-        aria-hidden="true"
-        className={`h-4 w-4 shrink-0 transition ${
-          props.download
-            ? "group-hover:translate-y-0.5"
-            : "group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-        }`}
-      />
+    <a className={`${actionClasses(variant)} ${className}`} {...props}>
+      <span>{children}</span>
+      <span className="action-arrow" aria-hidden="true">
+        {props.download ? "↓" : variant === "primary" ? "→" : "↗"}
+      </span>
     </a>
   );
 }

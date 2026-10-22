@@ -5,31 +5,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: "var(--canvas)",
-        surface: "var(--surface)",
-        "surface-subtle": "var(--surface-subtle)",
-        "text-primary": "var(--text-primary)",
-        "text-secondary": "var(--text-secondary)",
-        "text-muted": "var(--text-muted)",
-        border: "var(--border)",
-        "border-strong": "var(--border-strong)",
+        bg: "var(--bg)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        primary: "var(--primary)",
+        "primary-hover": "var(--primary-hover)",
+        "primary-soft": "var(--primary-soft)",
         accent: "var(--accent)",
         "accent-hover": "var(--accent-hover)",
-        "accent-subtle": "var(--accent-subtle)",
-        "accent-text": "var(--accent-text)",
-        "on-accent": "var(--on-accent)",
-        success: "var(--success)",
-        warning: "var(--warning)"
+        "accent-ink": "var(--accent-ink)",
+        "accent-wash": "var(--accent-wash)",
+        "dark-bg": "var(--dark-bg)",
+        "dark-surface": "var(--dark-surface)",
+        "dark-ink": "var(--dark-ink)",
+        "dark-muted": "var(--dark-muted)",
+        "dark-line": "var(--dark-line)",
+        "dark-accent": "var(--dark-accent)",
+        paper: "var(--paper)",
+        surface: "var(--surface)",
+        ink: "var(--ink)",
+        slate: "var(--slate)",
+        rule: "var(--rule)",
+        "rule-strong": "var(--rule-strong)",
+        "control-rule": "var(--control-rule)",
+        action: "var(--action)",
+        "action-hover": "var(--action-hover)",
+        "on-action": "var(--on-action)"
       },
       fontFamily: {
-        sans: ["var(--font-geist)", "Arial", "sans-serif"],
-        mono: ["var(--font-plex-mono)", "Consolas", "monospace"]
+        sans: ["var(--font-text)", "Arial", "sans-serif"]
       },
-      letterSpacing: { caps: "0.08em" },
-      borderRadius: { control: "var(--radius-control)", surface: "var(--radius-surface)" },
-      boxShadow: { media: "var(--shadow-media)" },
-      fontSize: { display: "var(--type-display)", section: "var(--type-section)", card: "var(--type-card)" },
-      spacing: { 22: "var(--space-22)" }
+      borderRadius: { control: "var(--radius-control)", surface: "var(--radius-surface)", lg: "6px", full: "6px" },
+      borderColor: { DEFAULT: "var(--line)" },
+      ringColor: { DEFAULT: "var(--accent)" },
+      ringOffsetColor: { DEFAULT: "var(--bg)" },
+      boxShadow: { DEFAULT: "none", sm: "none", md: "none", lg: "none", xl: "none", "2xl": "none", inner: "none" },
+      fontSize: { hero: "var(--type-hero)", section: "var(--type-section)", name: "var(--type-name)", row: "var(--type-row)" }
     }
   },
   plugins: []

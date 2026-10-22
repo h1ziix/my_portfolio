@@ -1,16 +1,15 @@
 type SectionLabelProps = {
-  eyebrow: string;
   title: string;
   kicker?: string;
   id?: string;
+  index?: string;
 };
 
-export function SectionLabel({ eyebrow, title, kicker, id }: SectionLabelProps) {
+export function SectionLabel({ title, kicker, id, index }: SectionLabelProps) {
   return (
-    <div className="min-w-0 border-t border-border pt-6">
-      <p className="font-mono text-xs uppercase tracking-caps text-accent-text">{eyebrow}</p>
-      <h2 id={id} className="mt-3 max-w-3xl text-balance text-section font-semibold leading-tight tracking-tight text-text-primary">{title}</h2>
-      {kicker ? <p className="text-width mt-3 text-pretty text-base leading-7 text-text-secondary md:text-lg">{kicker}</p> : null}
+    <div className="section-heading">
+      <div className="section-heading-title">{index ? <span className="section-index meta" aria-hidden="true">{index} /</span> : null}<h2 id={id} className="display text-section">{title}</h2></div>
+      {kicker ? <p className="section-kicker">{kicker}</p> : null}
     </div>
   );
 }

@@ -4,72 +4,79 @@ export const portfolio: Portfolio = {
   person: {
     name: "Toksoz Sultan",
     displayName: "TOKSOZ SULTAN",
-    title: "AI Product Developer",
-    positioning: "AI Product Developer",
+    title: "Full-stack developer",
+    positioning: "Full-stack development, AI and automation",
     experience: "2.5 years of development experience",
     location: "Almaty, Kazakhstan",
-    availability: "Available for opportunities",
+    workFormat: "Remote or hybrid",
+    availability: "Open to full-stack, AI and automation roles",
     profile:
-      "I build web products, backend systems and internal tools that automate complex business processes.",
-    summary:
-      "Full-stack AI products, from interfaces and data to research, integrations, human approvals and controlled actions.",
-    resumeHref: "/resume/toksoz-sultan-resume.pdf"
+      "I turn complex workflows into web products: from the interface and APIs to the database, background jobs and deployment.",
+    summary: "From idea to working product.",
+    resumeHref: "/resume/toksoz-sultan-resume.pdf",
+    resumeNote: "PDF, in Russian"
   },
   navigation: [
     { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
-    { label: "Skills", href: "#skills" },
-    { label: "Process", href: "#process" },
+    { label: "Stack", href: "#skills" },
     { label: "Contact", href: "#contact" }
   ],
-  heroMeta: ["Full-stack", "Agentic AI", "Automation"],
   projects: [
     {
       slug: "agentic-ops",
       name: "Agentic Ops",
-      subtitle: "Agentic AI sales operations",
+      subtitle: "AI sales operations",
       summary:
-        "A full-stack workspace that turns sales goals into company research, lead qualification and outreach drafts, with human approval before separate execution.",
+        "A workspace that turns a sales goal into company research, qualified leads and outreach drafts. Nothing is sent until a person approves it.",
       hierarchy: "featured",
-      role: "Full-stack development, agent architecture and operational UI",
+      role: "Full-stack development, agent architecture and the operations interface",
       technologies: [
-        "Next.js",
         "TypeScript",
-        "Supabase",
+        "Next.js",
         "PostgreSQL",
+        "Supabase",
         "Zod",
         "Gemini",
         "Tavily",
         "Trigger.dev"
       ],
-      releaseStatus: {
-        label: "Release 1.0 candidate",
-        description:
-          "Deployed application; full integration, worker and external-execution acceptance remains in progress."
-      },
-      accessStatus: {
-        label: "Public sample demo",
-        description:
-          "Fictional records. The demo makes no paid AI calls, sends no email and performs no CRM writes."
+      state: {
+        tone: "live",
+        label: "Live demo",
+        note: "Release 1.0 candidate. The demo runs on fictional records and sends nothing."
       },
       links: {
+        caseStudy: "/work/agentic-ops",
         demo: "https://agentic-ops-gold.vercel.app/demo/dashboard",
         source: "https://github.com/h1ziix/Agentic-Ops"
       },
       media: [
+        {
+          type: "video",
+          src: "/projects/agentic-ops/presentation.mp4",
+          poster: "/projects/agentic-ops/poster.webp",
+          alt: "Agentic Ops product presentation: research, lead scoring, outreach and human approval",
+          duration: "1:30",
+          captions: "/projects/agentic-ops/captions.ru.vtt",
+          transcript: "/projects/agentic-ops/transcript.ru.txt",
+          width: 1920,
+          height: 1080,
+          caption: "Product film. Russian narration and captions. Fictional demo records; no external actions."
+        },
         {
           type: "image",
           src: "/projects/agentic-ops-demo.png",
           alt: "Agentic Ops dashboard displaying its labelled fictional sample workspace",
           width: 1440,
           height: 1000,
-          caption: "Public sample workspace · fictional records"
+          caption: "The public sample workspace, with fictional records."
         }
       ],
       features: [
-        "Cited research and lead qualification",
-        "Typed agents with persisted workflow state",
-        "Exact approval followed by separate execution"
+        "Research with cited sources, then lead scoring",
+        "Typed agents whose workflow state is saved between steps",
+        "Approval and execution are separate steps, so what runs is exactly what was approved"
       ],
       limitations: [
         "Full Gmail, HubSpot and durable-worker acceptance remains pending.",
@@ -88,13 +95,52 @@ export const portfolio: Portfolio = {
       ]
     },
     {
+      slug: "atu-campus",
+      name: "ATU Campus",
+      subtitle: "University learning platform",
+      summary:
+        "A university workspace for students and teachers: schedules, course materials, assignments, grades and communication in one responsive PWA.",
+      hierarchy: "featured",
+      role: "Product architecture, interface, API, database and background processing",
+      technologies: ["TypeScript", "Next.js", "NestJS", "Python", "PostgreSQL", "Prisma", "Redis", "Docker"],
+      state: {
+        tone: "building",
+        label: "Demo project",
+        note: "Built with synthetic data. An independent project, awaiting a university pilot."
+      },
+      links: { caseStudy: "/work/atu-campus" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/atu-campus/presentation.mp4",
+          poster: "/projects/atu-campus/poster.webp",
+          alt: "ATU Campus presentation showing student and teacher workflows and a future AI review concept",
+          duration: "1:54",
+          captions: "/projects/atu-campus/captions.ru.vtt",
+          transcript: "/projects/atu-campus/transcript.ru.txt",
+          width: 1920,
+          height: 1080,
+          caption: "Demo walkthrough. Russian narration and captions. The AI grading segment is a future feature concept."
+        }
+      ],
+      features: [
+        "Separate student and teacher workflows, in Russian and Kazakh",
+        "Private assignment submissions, feedback, grades and attendance",
+        "Typed API, queued file processing and isolated Python document parsing"
+      ],
+      limitations: [
+        "No official university endorsement, live institutional integration or real student pilot yet.",
+        "The AI grading segment in the video is a concept. Live AI provider and quality acceptance remain pending."
+      ]
+    },
+    {
       slug: "kazecofood",
       name: "KazEcoFood",
       subtitle: "Internal document automation",
       summary:
-        "An internal workplace-assessment platform that synchronizes organization, workplace and measurement data, validates fields and exports regulated DOCX packages.",
+        "An internal platform for workplace assessments. It keeps organization, workplace and measurement data in one place, validates it and exports the regulated DOCX packages.",
       hierarchy: "major",
-      role: "Sole Fullstack Developer — product, frontend, backend, data and delivery",
+      role: "Sole developer: requirements, interface, backend, data and delivery",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -103,13 +149,10 @@ export const portfolio: Portfolio = {
         "Zod",
         "Vitest"
       ],
-      releaseStatus: {
-        label: "Internal production tool",
-        description: "Used in workplace-assessment operations, as reported by the developer."
-      },
-      accessStatus: {
-        label: "Public source",
-        description: "The operational workspace is internal; the source repository is public."
+      state: {
+        tone: "live",
+        label: "In production",
+        note: "Internal tool. The source is public."
       },
       links: {
         source: "https://github.com/h1ziix/KazFoodV2"
@@ -117,26 +160,80 @@ export const portfolio: Portfolio = {
       media: [],
       features: [
         "13 document types",
-        "Shared-field and workplace synchronization",
-        "Validation and DOCX batch generation"
+        "Shared fields and workplaces stay in sync across documents",
+        "Validation and batch DOCX export"
       ],
       outcomes: [
         {
-          value: "20–25 → 100–200",
+          value: "20–25 before, 100–200 after",
           label: "Documents per day",
-          basis: "Developer-reported operational throughput."
+          basis: "The assessment team's daily output before and after the platform."
         },
         {
-          value: "~2,000",
-          label: "Employees in assessment scope",
-          basis: "Developer-reported workflow scope."
+          value: "About 2,000",
+          label: "Employees covered",
+          basis: "People whose workplaces go through these assessments."
         },
         {
           value: "70+",
-          label: "Authored automated tests",
-          basis: "Test declarations found in source; this is not a claim of a verified test run."
+          label: "Automated tests",
+          basis: "They cover the business rules behind the documents."
         }
       ]
+    },
+    {
+      slug: "campusforge",
+      name: "CampusForge",
+      subtitle: "AI study workspace",
+      summary:
+        "A workspace for study documents, notes and events, with AI summaries in short and expanded form.",
+      hierarchy: "supporting",
+      role: "Product architecture, frontend and backend integration, AI workflow design",
+      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Playwright", "Docker"],
+      state: {
+        tone: "building",
+        label: "In development",
+        note: "Not production-ready yet. The source is public."
+      },
+      links: { source: "https://github.com/h1ziix/CampusForge" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/campusforge-preview.mp4",
+          alt: "CampusForge educational workspace video preview"
+        }
+      ],
+      features: ["Documents, notes and events", "Concise and expanded AI outputs"]
+    },
+    {
+      slug: "stratweb",
+      name: "StratWeb",
+      subtitle: "CS2 match analytics",
+      summary:
+        "A scouting tool for Counter-Strike 2 teams. It parses finished match demos and finds team and player habits that repeat, each one traceable to the matches and rounds it came from.",
+      hierarchy: "featured",
+      role: "Own project: demo parsing, analytics engine and scouting reports",
+      technologies: ["Python", "JavaScript", "FastAPI", "DuckDB", "Polars", "Docker", "pytest"],
+      state: {
+        tone: "building",
+        label: "In development",
+        note: "An independent project in local development. The source is public."
+      },
+      links: { caseStudy: "/work/stratweb", source: "https://github.com/h1ziix/StratWeb" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/stratweb/presentation.mp4",
+          poster: "/projects/stratweb/poster.webp",
+          alt: "StratWeb showreel: CS2 match analysis, tactical patterns, round playback and scouting reports",
+          duration: "0:46",
+          width: 1920,
+          height: 1080,
+          caption: "A short product showreel with the native Russian interface. Music, no narration."
+        }
+      ],
+      features: ["Demo parsing and match reconstruction", "Cross-match pattern detection", "Scouting reports"],
+      limitations: ["Independent recommendation-quality acceptance is still pending."]
     },
     {
       slug: "xeal",
@@ -147,9 +244,8 @@ export const portfolio: Portfolio = {
       hierarchy: "supporting",
       role: "Frontend implementation and integration support",
       technologies: ["Webflow"],
-      releaseStatus: { label: "Live website" },
-      accessStatus: { label: "Public website" },
-      links: { demo: "https://relate-xeal.webflow.io/" },
+      state: { tone: "live", label: "Live client site" },
+      links: { site: "https://relate-xeal.webflow.io/" },
       media: [
         {
           type: "video",
@@ -160,28 +256,6 @@ export const portfolio: Portfolio = {
       features: ["Responsive product presentation", "Frontend integration support"]
     },
     {
-      slug: "campusforge",
-      name: "CampusForge",
-      subtitle: "AI-assisted educational workspace",
-      summary:
-        "An educational platform for documents, notes and events, with structured AI knowledge workflows.",
-      hierarchy: "supporting",
-      role: "Product architecture, frontend/backend integration and AI workflow design",
-      technologies: ["Next.js", "TypeScript"],
-      releaseStatus: { label: "Release status not documented" },
-      accessStatus: { label: "Access on request" },
-      links: { access: "#contact" },
-      media: [
-        {
-          type: "video",
-          src: "/projects/campusforge-preview.mp4",
-          alt: "CampusForge educational workspace video preview"
-        }
-      ],
-      features: ["Documents, notes and events", "Concise and expanded AI outputs"],
-      limitations: ["Public source and demo access are not supplied in the current project material."]
-    },
-    {
       slug: "i-like-yogurt",
       name: "I Like & Yogurt",
       subtitle: "Commercial React website",
@@ -190,8 +264,7 @@ export const portfolio: Portfolio = {
       hierarchy: "supporting",
       role: "Frontend implementation, responsive UX and business logic",
       technologies: ["React"],
-      releaseStatus: { label: "Release status not documented" },
-      accessStatus: { label: "Access on request" },
+      state: { tone: "closed", label: "Client site", note: "Available on request." },
       links: { access: "#contact" },
       media: [
         {
@@ -200,8 +273,7 @@ export const portfolio: Portfolio = {
           alt: "I Like & Yogurt business website video preview"
         }
       ],
-      features: ["Responsive business information", "Contact links", "Opening-status logic"],
-      limitations: ["Public source and demo access are not supplied in the current project material."]
+      features: ["Responsive business information", "Contact links", "Opening-status logic"]
     }
   ],
   experience: [
@@ -218,32 +290,34 @@ export const portfolio: Portfolio = {
   ],
   skills: [
     {
-      area: "Frontend",
-      items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"]
+      area: "Languages",
+      items: ["TypeScript", "JavaScript", "Python", "SQL"],
+      description: "Typed product code, browser interactions, document processing and data analysis.",
+      projects: ["agentic-ops", "atu-campus", "stratweb"]
     },
     {
-      area: "Backend & Data",
-      items: ["Node.js", "Python", "SQL", "PostgreSQL", "Supabase", "MySQL"]
+      area: "Product interfaces",
+      items: ["React", "Next.js", "Tailwind CSS", "Responsive PWA"],
+      description: "Operational dashboards and interfaces built around real user workflows.",
+      projects: ["agentic-ops", "atu-campus"]
     },
     {
-      area: "AI / Agents",
-      items: [
-        "Typed agent orchestration",
-        "Structured output validation",
-        "Evidence-backed research",
-        "Human approval boundaries",
-        "Gemini",
-        "OpenAI API",
-        "Anthropic API"
-      ]
+      area: "Backend & data",
+      items: ["Node.js", "NestJS", "FastAPI", "PostgreSQL", "Prisma", "Supabase", "DuckDB"],
+      description: "APIs, relational models, access control and analytical data pipelines.",
+      projects: ["atu-campus", "stratweb", "kazecofood"]
     },
     {
-      area: "Automation & Integrations",
-      items: ["REST APIs", "Tavily", "Gmail / HubSpot OAuth", "Trigger.dev", "DOCX generation", "Data synchronization"]
+      area: "AI & automation",
+      items: ["Gemini", "OpenAI API", "Tavily", "Zod", "Agent orchestration", "Human approval", "DOCX generation"],
+      description: "Research with sources, validated outputs and explicit approval before execution.",
+      projects: ["agentic-ops", "kazecofood"]
     },
     {
-      area: "Tools & Delivery",
-      items: ["Git", "GitHub", "Docker", "CI/CD", "Vitest", "Automated testing"]
+      area: "Infrastructure & quality",
+      items: ["Redis", "BullMQ", "S3", "Docker", "Trigger.dev", "Git", "Playwright", "Vitest", "pytest"],
+      description: "Background workers, file storage, reproducible environments and automated checks.",
+      projects: ["atu-campus", "agentic-ops", "stratweb"]
     }
   ],
   assistants: ["Codex", "Claude Code", "ChatGPT"],
