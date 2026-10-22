@@ -1,6 +1,5 @@
 import { portfolio } from "@/data/portfolio";
 import { ActionLink } from "@/components/ui/action-link";
-import { additionalContactLinks } from "@/data/contact-links";
 import { Ribbon } from "@/components/ui/ribbon";
 import { CopyEmail } from "@/components/ui/copy-email";
 
@@ -79,55 +78,6 @@ export function Contact() {
                     <span className="sr-only"> (opens in a new tab)</span>
                   ) : null}
                 </a>
-              </li>
-            );
-          })}
-          {additionalContactLinks.map((social, index) => {
-            const configured = /^https?:\/\//.test(social.href);
-            const contents = (
-              <>
-                <span className="meta contact-index-number">
-                  0{index + portfolio.socials.length + 1}
-                </span>
-                <span className="display">{social.label}</span>
-                <span className="contact-value">
-                  {configured ? (
-                    social.href.replace(/^https?:\/\//, "")
-                  ) : (
-                    <>
-                      <span className="meta">{social.href}</span>
-                      <span className="placeholder-note">Add profile URL</span>
-                    </>
-                  )}
-                </span>
-                <span className="index-arrow" aria-hidden="true">
-                  {configured ? "↗" : "—"}
-                </span>
-              </>
-            );
-            return (
-              <li
-                key={social.label}
-                data-profile-status={configured ? "configured" : "placeholder"}
-              >
-                {configured ? (
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contact-index-row focus-ring"
-                  >
-                    {contents}
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                ) : (
-                  <div
-                    className="contact-index-row contact-placeholder"
-                    aria-disabled="true"
-                  >
-                    {contents}
-                  </div>
-                )}
               </li>
             );
           })}

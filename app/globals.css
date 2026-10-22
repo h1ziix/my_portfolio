@@ -1780,14 +1780,6 @@
     font-size: 16px;
     overflow-wrap: anywhere;
   }
-  .contact-placeholder {
-    color: var(--muted);
-  }
-  .placeholder-note {
-    display: block;
-    font-size: 12px;
-    margin-top: 4px;
-  }
   .site-footer {
     padding-top: 24px;
   }
