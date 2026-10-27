@@ -8,6 +8,7 @@ The current direction is **Launch tape**, selected by the user on 2026-10-22. It
 - Use a 12-column, 1280px grid with 24px gutters (16px mobile), fluid type and 96–180px section padding.
 - Gradients appear only on tape: hero marquee band, project edges, skills underline, process rail and contact cross. At most one dominant tape motif per viewport.
 - Project gradients: KazEcoFood ember, Agentic Ops ink, ATU Campus sand, StratWeb pitch. Supporting work uses ember at 60% opacity.
+- LeadPilot AI adds a scoped cobalt ribbon and trailer play control. Its cover is the final film's brand frame. The four-film reel keeps the latest addition at the front, with enough room for the expanded stack and a four-card mobile carousel.
 - Keep system/light/dark theme behavior and storage. Use CSS and IntersectionObserver; motion is always enabled per the latest user instruction, with no pause controls or hover pauses.
 - Reuse ActionLink, SectionLabel, ThemeToggle, TechnologyIcon, ProjectLinks and native ProjectVideo behavior. New primitives are Ribbon and RevealInView.
 - 21st inspiration search returned HTTP 401. The supplied design direction and existing primitives ground this implementation.

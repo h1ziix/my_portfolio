@@ -24,6 +24,8 @@ export type ProjectMedia = {
   caption?: string;
   poster?: string;
   duration?: string;
+  presentation?: "trailer";
+  format?: string;
   captions?: string;
   transcript?: string;
 };

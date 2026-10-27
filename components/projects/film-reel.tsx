@@ -51,12 +51,13 @@ export function FilmReel({ films }: { films: ReelFilm[] }) {
             type="button"
             className="reel-card focus-ring"
             data-ribbon={projectRibbon(film.slug)}
+            aria-label={`Watch ${film.name} ${film.media.presentation === "trailer" ? "trailer" : "film"}, ${film.media.duration}`}
             onClick={(event) => openFilm(film, event.currentTarget)}
           >
             <Ribbon variant="edge" gradient={projectRibbon(film.slug)} />
             <span className="reel-card-top meta">
               <span>
-                0{index + 1} / {film.name}
+                {String(index + 1).padStart(2, "0")} / {film.name}
               </span>
               <span>{film.media.duration}</span>
             </span>
@@ -71,7 +72,7 @@ export function FilmReel({ films }: { films: ReelFilm[] }) {
             <span className="reel-card-caption">
               <span>{film.subtitle}</span>
               <span className="meta">
-                Watch film <span aria-hidden="true">↗</span>
+                {film.media.presentation === "trailer" ? "Watch trailer" : "Watch film"} <span aria-hidden="true">↗</span>
               </span>
             </span>
           </button>
@@ -85,7 +86,7 @@ export function FilmReel({ films }: { films: ReelFilm[] }) {
               className="focus-ring meta"
               onClick={(event) => openFilm(film, event.currentTarget)}
             >
-              <span>0{index + 1}</span>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <span>{film.name}</span>
               <span>{film.media.duration}</span>
               <span aria-hidden="true">↗</span>

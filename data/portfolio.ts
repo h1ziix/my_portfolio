@@ -236,6 +236,42 @@ export const portfolio: Portfolio = {
       limitations: ["Independent recommendation-quality acceptance is still pending."]
     },
     {
+      slug: "leadpilot-ai",
+      name: "LeadPilot AI",
+      subtitle: "From lead to decision",
+      summary:
+        "A sales workspace that connects incoming requests to Bitrix24, uses Gemini to assess opportunities and gives a manager an evidence-backed next step.",
+      hierarchy: "featured",
+      role: "Product design, full-stack development, CRM integration and AI workflows",
+      technologies: ["TypeScript", "Next.js", "PostgreSQL", "Prisma", "Gemini", "Bitrix24", "Zod", "n8n"],
+      state: {
+        tone: "building",
+        label: "Working prototype",
+        note: "Live integrations verified on a synthetic lead. Private workspace."
+      },
+      links: { caseStudy: "/work/leadpilot-ai", access: "/#contact" },
+      media: [
+        {
+          type: "video",
+          src: "/projects/leadpilot-ai/presentation.mp4",
+          poster: "/projects/leadpilot-ai/poster.webp",
+          alt: "LeadPilot AI trailer: lead intake, linked Bitrix24 contact and deal, Gemini analysis and a manager's decision",
+          presentation: "trailer",
+          duration: "1:00",
+          format: "1080p · 60 FPS",
+          width: 1920,
+          height: 1080,
+          caption: "The final 60-second product trailer. Russian on-screen text and original music, no narration. Live Bitrix24 and Gemini footage from one verified synthetic lead; editorial motion graphics illustrate the workflow. The score is a priority, not a conversion probability. Approval is saved locally."
+        }
+      ],
+      features: [
+        "Confirmed intake links a contact and deal in Bitrix24, with recovery after interrupted requests",
+        "Gemini analysis with validated evidence and an explainable priority score",
+        "A manager reviews the next step and saves a local decision"
+      ],
+      limitations: ["Private local prototype. The trailer demonstrates one synthetic scenario; broader model quality and sales impact have not been established."]
+    },
+    {
       slug: "xeal",
       name: "XEAL",
       subtitle: "Commercial Webflow website",
@@ -293,31 +329,31 @@ export const portfolio: Portfolio = {
       area: "Languages",
       items: ["TypeScript", "JavaScript", "Python", "SQL"],
       description: "Typed product code, browser interactions, document processing and data analysis.",
-      projects: ["agentic-ops", "atu-campus", "stratweb"]
+      projects: ["agentic-ops", "atu-campus", "stratweb", "leadpilot-ai"]
     },
     {
       area: "Product interfaces",
       items: ["React", "Next.js", "Tailwind CSS", "Responsive PWA"],
       description: "Operational dashboards and interfaces built around real user workflows.",
-      projects: ["agentic-ops", "atu-campus"]
+      projects: ["agentic-ops", "atu-campus", "leadpilot-ai"]
     },
     {
       area: "Backend & data",
       items: ["Node.js", "NestJS", "FastAPI", "PostgreSQL", "Prisma", "Supabase", "DuckDB"],
       description: "APIs, relational models, access control and analytical data pipelines.",
-      projects: ["atu-campus", "stratweb", "kazecofood"]
+      projects: ["atu-campus", "stratweb", "kazecofood", "leadpilot-ai"]
     },
     {
       area: "AI & automation",
       items: ["Gemini", "OpenAI API", "Tavily", "Zod", "Agent orchestration", "Human approval", "DOCX generation"],
       description: "Research with sources, validated outputs and explicit approval before execution.",
-      projects: ["agentic-ops", "kazecofood"]
+      projects: ["agentic-ops", "kazecofood", "leadpilot-ai"]
     },
     {
       area: "Infrastructure & quality",
       items: ["Redis", "BullMQ", "S3", "Docker", "Trigger.dev", "Git", "Playwright", "Vitest", "pytest"],
       description: "Background workers, file storage, reproducible environments and automated checks.",
-      projects: ["atu-campus", "agentic-ops", "stratweb"]
+      projects: ["atu-campus", "agentic-ops", "stratweb", "leadpilot-ai"]
     }
   ],
   assistants: ["Codex", "Claude Code", "ChatGPT"],

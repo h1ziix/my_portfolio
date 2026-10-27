@@ -7,7 +7,7 @@ import { RevealInView } from "@/components/ui/reveal-in-view";
 import { projectRibbon } from "@/lib/ribbon";
 import { StarField } from "@/components/ui/star-field";
 
-const filterSlugs = ["agentic-ops", "atu-campus", "stratweb", "kazecofood"];
+const filterSlugs = ["leadpilot-ai", "agentic-ops", "atu-campus", "stratweb", "kazecofood"];
 export function TechnicalSkills() {
   const [selected, setSelected] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);

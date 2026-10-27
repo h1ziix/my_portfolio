@@ -23,6 +23,7 @@ export function ProjectVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const captionId = useId();
   const [playback, setPlayback] = useState<PlaybackState>("idle");
+  const isTrailer = media.presentation === "trailer";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -49,12 +50,18 @@ export function ProjectVideo({
   }
 
   return (
-    <figure id={id} className="film min-w-0">
+    <figure
+      id={id}
+      className="film min-w-0"
+      data-presentation={media.presentation}
+    >
       <div className="film-frame">
         {ribbon ? <Ribbon variant="edge" gradient={ribbon} /> : null}
         <div className="film-heading">
           <span className="font-medium text-ink">{name}</span>
-          <span className="text-slate">Video presentation</span>
+          <span className="text-slate">
+            {isTrailer ? "Project trailer" : "Video presentation"}
+          </span>
         </div>
         <div className="film-stage" aria-busy={playback === "loading"}>
           <video
@@ -124,7 +131,11 @@ export function ProjectVideo({
                 </svg>
               </span>
               <span className="film-watch-label">
-                {playback === "ended" ? "Watch again" : "Watch presentation"}
+                {playback === "ended"
+                  ? "Watch again"
+                  : isTrailer
+                    ? "Watch trailer"
+                    : "Watch presentation"}
               </span>
               <span className="film-hover-label meta">
                 PLAY <span aria-hidden="true">▸</span> {media.duration}
@@ -154,9 +165,14 @@ export function ProjectVideo({
                   ? "Finished"
                   : playback === "loading"
                     ? "Loading video"
-                    : "Product film"}
+                    : isTrailer
+                      ? "Project trailer"
+                      : "Product film"}
           </span>
           <span className="flex items-center gap-3 text-slate">
+            {media.format ? (
+              <span className="film-format">{media.format}</span>
+            ) : null}
             {media.duration ? (
               <span className="film-duration">{media.duration}</span>
             ) : null}

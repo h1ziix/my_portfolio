@@ -1,4 +1,4 @@
-export const projectStorySlugs = ["agentic-ops", "atu-campus", "stratweb"] as const;
+export const projectStorySlugs = ["leadpilot-ai", "agentic-ops", "atu-campus", "stratweb"] as const;
 
 export type ProjectStorySlug = (typeof projectStorySlugs)[number];
 
@@ -10,6 +10,54 @@ type ProjectStory = {
 
 /** The longer product story; shared facts, media and status live in portfolio.ts. */
 export const projectStories = {
+  "leadpilot-ai": {
+    problem:
+      "A new sales request needs more than a CRM entry. The team needs to understand the opportunity, see why it deserves attention and choose the next step. I built a workspace that carries a confirmed request through CRM intake, AI assessment and a manager's review, with a saved history at every stage.",
+    architecture: [
+      {
+        title: "Capture and confirm the request",
+        description:
+          "The intake form captures the service, budget and project context. A confirmed submission gets a durable UUID and a PostgreSQL record, so an interrupted request can be inspected and recovered."
+      },
+      {
+        title: "Connect the CRM records",
+        description:
+          "A typed server-side Bitrix24 client matches or creates a contact and links the opportunity to a deal. Bitrix24 owns the CRM records; Prisma and PostgreSQL preserve workflow intent, operation history and recovery metadata."
+      },
+      {
+        title: "Assess the opportunity",
+        description:
+          "The operator previews the exact context before a Gemini request. Zod and evidence checks validate the structured response, while deterministic scoring turns supported signals into an explainable priority. The run history, result and sources stay available for review."
+      },
+      {
+        title: "Review the next step",
+        description:
+          "A manager inspects the recommendation and confirms a local decision. The trailer follows one verified synthetic request through a real linked contact and deal, a completed Gemini assessment and a saved approval."
+      }
+    ],
+    decisions: [
+      {
+        title: "Recover intent before repeating a write",
+        description:
+          "Durable operation IDs and recovery markers distinguish a failed operation from one that succeeded before its response was lost. Intake can reconcile the original CRM write before attempting another contact or deal."
+      },
+      {
+        title: "Keep evidence beside the score",
+        description:
+          "Model output is checked against the submitted context. Priority is calculated from supported signals; unknown criteria are excluded from normalization. The score expresses review priority, not the probability of a sale."
+      },
+      {
+        title: "Make approval an explicit decision",
+        description:
+          "AI analysis starts after an exact-context preview and consent. Manager approval is stored locally as its own review record. It does not silently send a message, change the deal stage or write the recommendation back to the CRM."
+      },
+      {
+        title: "Separate workflow state from CRM ownership",
+        description:
+          "Bitrix24 remains authoritative for contacts and deals. PostgreSQL holds workflow state, AI runs and reviews, while bounded n8n workflows exchange metadata. This keeps the recovery path inspectable across system boundaries."
+      }
+    ]
+  },
   "agentic-ops": {
     problem:
       "Sales research involves more than generating a message. A useful system needs to carry the goal, company evidence and qualification through to a draft that an operator can inspect and approve. I built one workspace for that complete workflow.",

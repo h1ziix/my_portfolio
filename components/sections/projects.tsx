@@ -5,6 +5,7 @@ import { ProjectOverview } from "@/components/projects/project-overview";
 export function Projects() {
   const selected = [
     "kazecofood",
+    "leadpilot-ai",
     "agentic-ops",
     "atu-campus",
     "stratweb",
@@ -12,6 +13,9 @@ export function Projects() {
     portfolio.projects.filter((project) => project.slug === slug),
   );
   const selectedSlugs = new Set(selected.map((project) => project.slug));
+  const supporting = portfolio.projects.filter(
+    (project) => !selectedSlugs.has(project.slug),
+  );
   return (
     <section
       id="work"
@@ -44,16 +48,20 @@ export function Projects() {
       </div>
       <div className="more-work-heading">
         <h3 className="display">More work</h3>
-        <span className="meta text-slate">05 — 07</span>
+        <span className="meta text-slate">
+          {String(selected.length + 1).padStart(2, "0")} —{" "}
+          {String(portfolio.projects.length).padStart(2, "0")}
+        </span>
       </div>
       <div className="index-table">
-        {portfolio.projects
-          .filter((project) => !selectedSlugs.has(project.slug))
-          .map((project, index) => (
-            <RevealInView key={project.slug} order={index}>
-              <ProjectOverview project={project} index={index + 5} />
-            </RevealInView>
-          ))}
+        {supporting.map((project, index) => (
+          <RevealInView key={project.slug} order={index}>
+            <ProjectOverview
+              project={project}
+              index={index + selected.length + 1}
+            />
+          </RevealInView>
+        ))}
       </div>
     </section>
   );
