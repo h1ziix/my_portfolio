@@ -16,6 +16,7 @@ type ReelFilm = {
 
 export function FilmReel({ films }: { films: ReelFilm[] }) {
   const [selected, setSelected] = useState<ReelFilm | null>(null);
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
 
@@ -51,6 +52,7 @@ export function FilmReel({ films }: { films: ReelFilm[] }) {
             type="button"
             className="reel-card focus-ring"
             data-ribbon={projectRibbon(film.slug)}
+            data-active={activeSlug === film.slug ? "true" : undefined}
             aria-label={`Watch ${film.name} ${film.media.presentation === "trailer" ? "trailer" : "film"}, ${film.media.duration}`}
             onClick={(event) => openFilm(film, event.currentTarget)}
           >
@@ -78,12 +80,18 @@ export function FilmReel({ films }: { films: ReelFilm[] }) {
           </button>
         ))}
       </div>
-      <ol className="reel-index">
+      <ol
+        className="reel-index"
+        onMouseLeave={() => setActiveSlug(null)}
+      >
         {films.map((film, index) => (
           <li key={film.slug}>
             <button
               type="button"
               className="focus-ring meta"
+              onMouseEnter={() => setActiveSlug(film.slug)}
+              onFocus={() => setActiveSlug(film.slug)}
+              onBlur={() => setActiveSlug(null)}
               onClick={(event) => openFilm(film, event.currentTarget)}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
