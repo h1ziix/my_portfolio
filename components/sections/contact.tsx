@@ -43,8 +43,13 @@ export function Contact() {
               </ActionLink>
             ) : null}
             <ActionLink href={person.resumeHref} download>
-              Download resume
+              Download resume (EN)
             </ActionLink>
+            {person.resumeRuHref ? (
+              <ActionLink href={person.resumeRuHref} download>
+                Resume (RU)
+              </ActionLink>
+            ) : null}
           </div>
         </div>
         {email ? (

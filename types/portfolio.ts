@@ -80,6 +80,7 @@ export type PortfolioPerson = {
   profile: string;
   summary: string;
   resumeHref: string;
+  resumeRuHref?: string;
   resumeNote: string;
 };
 

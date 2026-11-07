@@ -14,7 +14,8 @@ export const portfolio: Portfolio = {
       "I turn complex workflows into web products: from the interface and APIs to the database, background jobs and deployment.",
     summary: "From idea to working product.",
     resumeHref: "/resume/toksoz-sultan-resume.pdf",
-    resumeNote: "PDF, in Russian"
+    resumeRuHref: "/resume/toksoz-sultan-resume-ru.pdf",
+    resumeNote: "PDF, in English and Russian"
   },
   navigation: [
     { label: "Work", href: "#work" },
