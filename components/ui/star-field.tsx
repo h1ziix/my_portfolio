@@ -127,6 +127,8 @@ export function StarField({ variant }: { variant?: "dark" }) {
       lastTick = 0,
       elapsed = 0;
     let resizeTimer: ReturnType<typeof setTimeout>;
+    let scrollTimer: ReturnType<typeof setTimeout>;
+    let scrolling = false;
     let disposed = false;
     let sizeKey = "";
     let dark = false,
@@ -368,7 +370,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       const covered =
         !local && scroll >= coveredTop && scroll + height <= coveredBottom;
       return (
-        !disposed && !document.hidden && inView && !covered
+        !disposed && !document.hidden && inView && !covered && !scrolling
       );
     }
     function tick(timestamp: number) {
@@ -398,7 +400,7 @@ export function StarField({ variant }: { variant?: "dark" }) {
       scroll = window.scrollY;
       const rect = canvas!.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
-      const nextDpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 1.25);
       const nextTop = rect.top + scroll;
       const key = `${rect.width}/${rect.height}/${nextDpr}/${nextTop}/${document.body.offsetHeight}/${window.innerWidth}`;
       if (key === sizeKey) return;
@@ -435,11 +437,20 @@ export function StarField({ variant }: { variant?: "dark" }) {
     }
     function queueResize() {
       clearTimeout(resizeTimer);
+      clearTimeout(scrollTimer);
       resizeTimer = setTimeout(resize, 150);
     }
     function onScroll() {
       scroll = window.scrollY;
-      syncLoop();
+      if (!scrolling) {
+        scrolling = true;
+        syncLoop();
+      }
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        scrolling = false;
+        syncLoop();
+      }, 120);
     }
     function onTheme() {
       readPalette();
