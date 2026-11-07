@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 const socialImageUrl = new URL("/opengraph-image", siteUrl).href;
 const siteTitle = "Toksoz Sultan — Full-stack developer | TypeScript, Python & AI";
 const siteDescription =
-  "Full-stack developer in Almaty working with TypeScript, JavaScript, Python and PostgreSQL. Explore Agentic Ops, ATU Campus and business automation through product videos and engineering case studies.";
+  "Full-stack developer in Almaty working with TypeScript, Next.js, NestJS, Python and PostgreSQL. Explore KazEcoFood, LeadPilot AI, Agentic Ops, ATU Campus and StratWeb through product films and engineering case studies.";
 
 // Resolve the saved or system preference before the page paints.
 const themeBootstrap = `(function(){var p='system';try{var s=localStorage.getItem('toksoz-theme');if(s==='light'||s==='dark')p=s;}catch(e){}var t=p==='system'?(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;var r=document.documentElement;r.dataset.theme=t;r.dataset.themePreference=p;r.style.colorScheme=t;})();`;
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         url: socialImageUrl,
         width: 1200,
         height: 630,
-        alt: "Toksoz Sultan — Products, agents and automation. TypeScript, JavaScript, Python and PostgreSQL."
+        alt: "Toksoz Sultan — From idea to working product. TypeScript, Next.js, NestJS, Python and PostgreSQL."
       }
     ]
   },

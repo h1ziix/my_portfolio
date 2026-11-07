@@ -18,15 +18,25 @@ export default function OpenGraphImage() {
     <div style={{ display: "flex", width: "100%", height: "100%", flexDirection: "column", justifyContent: "space-between", padding: "64px 72px", background: palette.bg, color: palette.ink, fontFamily: "sans-serif" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 28 }}>
         <span style={{ fontWeight: 700 }}>Toksoz Sultan</span>
-        <span style={{ color: palette.muted, fontSize: 24 }}>Full-stack developer</span>
+        <span style={{ color: palette.muted, fontSize: 24 }}>Full-stack developer · Almaty · UTC+5</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", fontSize: 80, fontWeight: 700, letterSpacing: "-3px", lineHeight: 1.1 }}>
-        <span>Products, agents</span>
-        <span style={{ color: palette.accent }}>& automation.</span>
+      <div style={{ display: "flex", flexDirection: "column", fontSize: 80, fontWeight: 700, letterSpacing: "-3px", lineHeight: 1.08 }}>
+        <span>From idea to</span>
+        <span style={{ color: palette.accent }}>working product.</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 24, borderTop: `1px solid ${palette.line}`, paddingTop: 24 }}>
-        <div style={{ display: "flex", fontSize: 24, gap: 36 }}><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>PostgreSQL</span></div>
-        <div style={{ display: "flex", color: palette.muted, fontSize: 21 }}>Featuring Agentic Ops & ATU Campus</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 20, borderTop: `1px solid ${palette.line}`, paddingTop: 24 }}>
+        <div style={{ display: "flex", fontSize: 24, gap: 32, fontWeight: 600 }}>
+          <span>TypeScript</span>
+          <span>Next.js</span>
+          <span>NestJS</span>
+          <span>FastAPI</span>
+          <span>Python</span>
+          <span>PostgreSQL</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", color: palette.muted, fontSize: 21 }}>
+          <span>KazEcoFood · LeadPilot AI · Agentic Ops · ATU Campus · StratWeb</span>
+          <span>toksoz-sultan-portf.vercel.app</span>
+        </div>
       </div>
     </div>, size
   );
