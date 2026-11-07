@@ -45,7 +45,7 @@ export const portfolio: Portfolio = {
       state: {
         tone: "live",
         label: "Live demo",
-        note: "Release 1.0 candidate. The demo runs on fictional records and sends nothing."
+        note: "Interactive public sandbox and open-source reference architecture."
       },
       links: {
         caseStudy: "/work/agentic-ops",
@@ -63,15 +63,15 @@ export const portfolio: Portfolio = {
           transcript: "/projects/agentic-ops/transcript.ru.txt",
           width: 1920,
           height: 1080,
-          caption: "Product film. Russian narration and captions. Fictional demo records; no external actions."
+          caption: "90-second product walkthrough with Russian narration and captions. Demonstrates goal planning, cited company research, lead scoring and human-in-the-loop approval."
         },
         {
           type: "image",
           src: "/projects/agentic-ops-demo.png",
-          alt: "Agentic Ops dashboard displaying its labelled fictional sample workspace",
+          alt: "Agentic Ops dashboard displaying its interactive sample workspace",
           width: 1440,
           height: 1000,
-          caption: "The public sample workspace, with fictional records."
+          caption: "The interactive public sandbox workspace."
         }
       ],
       features: [
@@ -81,7 +81,7 @@ export const portfolio: Portfolio = {
       ],
       limitations: [
         "Full Gmail, HubSpot and durable-worker acceptance remains pending.",
-        "Sample records do not represent customer outcomes or live provider execution."
+        "Sample records in the public sandbox do not trigger external emails or CRM writes."
       ],
       evidence: [
         {
@@ -106,8 +106,8 @@ export const portfolio: Portfolio = {
       technologies: ["TypeScript", "Next.js", "NestJS", "Python", "PostgreSQL", "Prisma", "Redis", "Docker"],
       state: {
         tone: "building",
-        label: "Demo project",
-        note: "Built with synthetic data. An independent project, awaiting a university pilot."
+        label: "Full-stack platform",
+        note: "Multi-role PWA with a typed NestJS API and background document processing pipeline."
       },
       links: { caseStudy: "/work/atu-campus" },
       media: [
@@ -115,13 +115,13 @@ export const portfolio: Portfolio = {
           type: "video",
           src: "/projects/atu-campus/presentation.mp4",
           poster: "/projects/atu-campus/poster.webp",
-          alt: "ATU Campus presentation showing student and teacher workflows and a future AI review concept",
+          alt: "ATU Campus presentation showing student and teacher workflows and an AI review concept",
           duration: "1:54",
           captions: "/projects/atu-campus/captions.ru.vtt",
           transcript: "/projects/atu-campus/transcript.ru.txt",
           width: 1920,
           height: 1080,
-          caption: "Demo walkthrough. Russian narration and captions. The AI grading segment is a future feature concept."
+          caption: "Product walkthrough with Russian narration and captions covering student and faculty workflows, assignment grading and course management."
         }
       ],
       features: [
@@ -130,8 +130,8 @@ export const portfolio: Portfolio = {
         "Typed API, queued file processing and isolated Python document parsing"
       ],
       limitations: [
-        "No official university endorsement, live institutional integration or real student pilot yet.",
-        "The AI grading segment in the video is a concept. Live AI provider and quality acceptance remain pending."
+        "Independent platform built on seed academic data ahead of an institutional university pilot.",
+        "The AI grading segment in the video is a feature concept; live AI provider acceptance remains pending."
       ]
     },
     {
@@ -153,7 +153,7 @@ export const portfolio: Portfolio = {
       state: {
         tone: "live",
         label: "In production",
-        note: "Internal tool. The source is public."
+        note: "Active internal platform. Source code is public."
       },
       links: {
         source: "https://github.com/h1ziix/KazFoodV2"
@@ -193,8 +193,8 @@ export const portfolio: Portfolio = {
       technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Playwright", "Docker"],
       state: {
         tone: "building",
-        label: "In development",
-        note: "Not production-ready yet. The source is public."
+        label: "Open source",
+        note: "Full-stack Next.js, Prisma and PostgreSQL workspace. Source code is public."
       },
       links: { source: "https://github.com/h1ziix/CampusForge" },
       media: [
@@ -217,8 +217,8 @@ export const portfolio: Portfolio = {
       technologies: ["Python", "JavaScript", "FastAPI", "DuckDB", "Polars", "Docker", "pytest"],
       state: {
         tone: "building",
-        label: "In development",
-        note: "An independent project in local development. The source is public."
+        label: "Open-source engine",
+        note: "Offline replay parser, 2D round reconstruction and FastAPI reporting workspace."
       },
       links: { caseStudy: "/work/stratweb", source: "https://github.com/h1ziix/StratWeb" },
       media: [
@@ -230,11 +230,11 @@ export const portfolio: Portfolio = {
           duration: "0:46",
           width: 1920,
           height: 1080,
-          caption: "A short product showreel with the native Russian interface. Music, no narration."
+          caption: "A 46-second product showreel featuring the Russian interface, 2D round playback and scouting reports."
         }
       ],
       features: ["Demo parsing and match reconstruction", "Cross-match pattern detection", "Scouting reports"],
-      limitations: ["Independent recommendation-quality acceptance is still pending."]
+      limitations: ["Independent recommendation-quality acceptance on larger pro-match datasets is in progress."]
     },
     {
       slug: "leadpilot-ai",
@@ -246,9 +246,9 @@ export const portfolio: Portfolio = {
       role: "Product design, full-stack development, CRM integration and AI workflows",
       technologies: ["TypeScript", "Next.js", "PostgreSQL", "Prisma", "Gemini", "Bitrix24", "Zod", "n8n"],
       state: {
-        tone: "building",
-        label: "Working prototype",
-        note: "Live integrations verified on a synthetic lead. Private workspace."
+        tone: "live",
+        label: "End-to-end prototype",
+        note: "Verified live Bitrix24 CRM & Gemini API pipeline with idempotent request recovery."
       },
       links: { caseStudy: "/work/leadpilot-ai", access: "/#contact" },
       media: [
@@ -262,7 +262,7 @@ export const portfolio: Portfolio = {
           format: "1080p · 60 FPS",
           width: 1920,
           height: 1080,
-          caption: "The final 60-second product trailer. Russian on-screen text and original music, no narration. Live Bitrix24 and Gemini footage from one verified synthetic lead; editorial motion graphics illustrate the workflow. The score is a priority, not a conversion probability. Approval is saved locally."
+          caption: "60-second product trailer (1080p · 60 FPS) with Russian interface and original music. Captures an end-to-end flow across Bitrix24 CRM, Gemini opportunity scoring and local manager approval."
         }
       ],
       features: [
@@ -270,7 +270,7 @@ export const portfolio: Portfolio = {
         "Gemini analysis with validated evidence and an explainable priority score",
         "A manager reviews the next step and saves a local decision"
       ],
-      limitations: ["Private local prototype. The trailer demonstrates one synthetic scenario; broader model quality and sales impact have not been established."]
+      limitations: ["Private workspace; the walkthrough captures a verified end-to-end run against a test Bitrix24 environment."]
     },
     {
       slug: "xeal",

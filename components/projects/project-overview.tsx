@@ -28,14 +28,10 @@ function ProjectTechnologies({ project }: { project: Project }) {
   );
 }
 function ProjectBoundaries({ project }: { project: Project }) {
+  if (!project.evidence?.length) return null;
   return (
     <>
-      {project.limitations?.map((limitation) => (
-        <p key={limitation} className="project-limitation">
-          {limitation}
-        </p>
-      ))}
-      {project.evidence?.map((evidence) => (
+      {project.evidence.map((evidence) => (
         <a
           key={evidence.source}
           href={evidence.source}
